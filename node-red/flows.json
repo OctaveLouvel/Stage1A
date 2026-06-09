@@ -140,26 +140,26 @@
         "breakpoints": [
             {
                 "name": "Default",
-                "px": 0,
-                "cols": 3
+                "px": "0",
+                "cols": "4"
             },
             {
                 "name": "Tablet",
-                "px": 576,
-                "cols": 6
+                "px": "576",
+                "cols": "6"
             },
             {
                 "name": "Small Desktop",
-                "px": 768,
-                "cols": 9
+                "px": "768",
+                "cols": "9"
             },
             {
                 "name": "Desktop",
-                "px": 1024,
-                "cols": 12
+                "px": "1024",
+                "cols": "12"
             }
         ],
-        "order": 1,
+        "order": 2,
         "className": "",
         "visible": "true",
         "disabled": "false"
@@ -248,6 +248,84 @@
         "width": 6,
         "height": 1,
         "order": 6,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "e93ac04dd14c7c41",
+        "type": "ui-page",
+        "name": "Record Data",
+        "ui": "0a82d6cde910b9ce",
+        "path": "/page2",
+        "icon": "camera",
+        "layout": "grid",
+        "theme": "cfa065d11e3b61bc",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "8fa215b2d22c10a1",
+        "type": "ui-group",
+        "name": "Record",
+        "page": "e93ac04dd14c7c41",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "819c0672e591b0ca",
+        "type": "ui-group",
+        "name": "Data",
+        "page": "e93ac04dd14c7c41",
+        "width": 6,
+        "height": 1,
+        "order": 2,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "5f6433eaaffe09b8",
+        "type": "ui-group",
+        "name": "Playback",
+        "page": "e93ac04dd14c7c41",
+        "width": 6,
+        "height": 1,
+        "order": 3,
         "showTitle": true,
         "className": "",
         "visible": "true",
@@ -1391,7 +1469,7 @@
         "type": "function",
         "z": "37999168f7331a03",
         "name": "function 1",
-        "func": "let pos = flow.get(\"pos\") || {x: 0,y: 0, z: 0};\nlet rot = flow.get(\"rot\") || { x: 0, y: 0, z: 0, w: 0};\n\nmsg.payload = {\n    header: {\n        frame_id: \"base_link\"\n    },\n    pose: {\n        position: pos,\n        orientation: rot\n    }\n};\n\nif((pos[\"x\"]*100)**2 + (pos[\"y\"]*100)**2 + (pos[\"z\"]*100)**2 > 5000){\n    msg.payload = false\n}\n\nreturn msg;",
+        "func": "let pos = flow.get(\"pos\") || {x: 0,y: 0, z: 0};\nlet rot = flow.get(\"rot\") || { x: 0, y: 0, z: 0, w: 0};\n\nmsg.payload = {\n    header: {\n        frame_id: \"base_link\"\n    },\n    pose: {\n        position: pos,\n        orientation: rot\n    }\n};\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -2163,6 +2241,1129 @@
         "className": "",
         "x": 190,
         "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2e73d3539b370f2e",
+        "type": "exec",
+        "z": "7eac0d34c6842661",
+        "command": "ros2 topic list -t",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 320,
+        "y": 180,
+        "wires": [
+            [
+                "5698da2f9ab4c85e"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "ad063e52d51fec2f",
+        "type": "inject",
+        "z": "7eac0d34c6842661",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 180,
+        "wires": [
+            [
+                "2e73d3539b370f2e"
+            ]
+        ]
+    },
+    {
+        "id": "5698da2f9ab4c85e",
+        "type": "split",
+        "z": "7eac0d34c6842661",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": true,
+        "addname": "",
+        "property": "payload",
+        "x": 510,
+        "y": 160,
+        "wires": [
+            [
+                "68b1bfde2bfbaa49",
+                "65046d2db7f2b2b2",
+                "a024c7f35c51da3c"
+            ]
+        ]
+    },
+    {
+        "id": "68b1bfde2bfbaa49",
+        "type": "debug",
+        "z": "7eac0d34c6842661",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "644156479f22f0c9",
+        "type": "ui-button",
+        "z": "7eac0d34c6842661",
+        "group": "8fa215b2d22c10a1",
+        "name": "",
+        "label": "Start Recording",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 1100,
+        "y": 200,
+        "wires": [
+            [
+                "1db2200d08c777e6"
+            ]
+        ]
+    },
+    {
+        "id": "7194f46e9a5190e2",
+        "type": "ui-button",
+        "z": "7eac0d34c6842661",
+        "group": "8fa215b2d22c10a1",
+        "name": "",
+        "label": "Stop Recording",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "kill",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 1120,
+        "y": 280,
+        "wires": [
+            [
+                "77458c416232bac4",
+                "8e65fa084b0fff2a"
+            ]
+        ]
+    },
+    {
+        "id": "7fe1a818d444c2d8",
+        "type": "ui-switch",
+        "z": "7eac0d34c6842661",
+        "name": "",
+        "label": "/camera/camera/color/image_raw",
+        "group": "8fa215b2d22c10a1",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": false,
+        "topic": "payload",
+        "topicType": "msg",
+        "style": "",
+        "className": "",
+        "layout": "row-spread",
+        "clickableArea": "line",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "x": 240,
+        "y": 460,
+        "wires": [
+            [
+                "ad9940caeab1b430"
+            ]
+        ]
+    },
+    {
+        "id": "5df58008ea2c595e",
+        "type": "function",
+        "z": "7eac0d34c6842661",
+        "name": "function 3",
+        "func": "let topic = flow.get(\"topic\") || {};\n\ntopic[msg.topic] = msg.payload;\n\nflow.set(\"topic\", topic);\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "09491869ce0a5c8d",
+        "type": "exec",
+        "z": "7eac0d34c6842661",
+        "command": "ros2 bag record ",
+        "addpay": "args",
+        "append": "",
+        "useSpawn": "true",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "record",
+        "x": 1490,
+        "y": 200,
+        "wires": [
+            [
+                "4a5f422bd8b69ccf"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "1db2200d08c777e6",
+        "type": "function",
+        "z": "7eac0d34c6842661",
+        "name": "function 4",
+        "func": "let topic = flow.get(\"topic\") || {};\nlet name = flow.get(\"name\") || \"\";\nlet args = \"\";\n\nfor (var prop in topic) {\n    if (topic[prop]){\n        args += prop + \" \";\n    }\n}\n\nif(name != \"\"){\n    args += \"-o bags/\" + name;\n    msg.args = args;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1320,
+        "y": 200,
+        "wires": [
+            [
+                "09491869ce0a5c8d"
+            ]
+        ]
+    },
+    {
+        "id": "8a6111a517facdb9",
+        "type": "ui-switch",
+        "z": "7eac0d34c6842661",
+        "name": "",
+        "label": "/camera/camera/depth/image_rect_raw",
+        "group": "8fa215b2d22c10a1",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "decouple": false,
+        "topic": "payload",
+        "topicType": "msg",
+        "style": "",
+        "className": "",
+        "layout": "row-spread",
+        "clickableArea": "line",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "x": 260,
+        "y": 520,
+        "wires": [
+            [
+                "949a5eec2b5f35b5"
+            ]
+        ]
+    },
+    {
+        "id": "ad9940caeab1b430",
+        "type": "change",
+        "z": "7eac0d34c6842661",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "/camera/camera/color/image_raw",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 460,
+        "wires": [
+            [
+                "5df58008ea2c595e"
+            ]
+        ]
+    },
+    {
+        "id": "949a5eec2b5f35b5",
+        "type": "change",
+        "z": "7eac0d34c6842661",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "/camera/camera/depth/image_rect_raw",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 510,
+        "y": 520,
+        "wires": [
+            [
+                "5df58008ea2c595e"
+            ]
+        ]
+    },
+    {
+        "id": "cf098d80e782ab1b",
+        "type": "ui-text",
+        "z": "7eac0d34c6842661",
+        "group": "8fa215b2d22c10a1",
+        "order": 10,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "text",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "args",
+        "valueType": "msg",
+        "x": 630,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "2c321cb0e079f320",
+        "type": "function",
+        "z": "7eac0d34c6842661",
+        "name": "function 6",
+        "func": "let topic = flow.get(\"topic\") || {};\nlet name = flow.get(\"name\") || \"\";\nlet args = \"\";\n\nfor (var prop in topic) {\n    if (topic[prop]) {\n        args += prop + \" \";\n    }\n}\n\nif (name != \"\") {\n    args += \"-o bags/\" + name;\n}\n\nmsg.args = args;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 980,
+        "wires": [
+            [
+                "cf098d80e782ab1b"
+            ]
+        ]
+    },
+    {
+        "id": "be3a35451c0c0662",
+        "type": "ui-button",
+        "z": "7eac0d34c6842661",
+        "group": "8fa215b2d22c10a1",
+        "name": "",
+        "label": "button",
+        "order": 9,
+        "width": 0,
+        "height": 0,
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 330,
+        "y": 980,
+        "wires": [
+            [
+                "2c321cb0e079f320"
+            ]
+        ]
+    },
+    {
+        "id": "b4bac91564af5c7f",
+        "type": "ui-text-input",
+        "z": "7eac0d34c6842661",
+        "group": "8fa215b2d22c10a1",
+        "name": "",
+        "label": "Name of ros bag",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "topic": "topic",
+        "topicType": "msg",
+        "mode": "text",
+        "tooltip": "",
+        "delay": 300,
+        "passthru": true,
+        "sendOnDelay": false,
+        "sendOnBlur": true,
+        "sendOnEnter": true,
+        "className": "",
+        "clearable": false,
+        "sendOnClear": false,
+        "icon": "",
+        "iconPosition": "left",
+        "iconInnerPosition": "inside",
+        "x": 180,
+        "y": 620,
+        "wires": [
+            [
+                "6c77795a704531a6"
+            ]
+        ]
+    },
+    {
+        "id": "6c77795a704531a6",
+        "type": "function",
+        "z": "7eac0d34c6842661",
+        "name": "name bag",
+        "func": "let name = msg.payload;\n\nflow.set(\"name\", name);\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "77458c416232bac4",
+        "type": "function",
+        "z": "7eac0d34c6842661",
+        "name": "function 7",
+        "func": "msg.kill = \"\";\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1320,
+        "y": 280,
+        "wires": [
+            [
+                "09491869ce0a5c8d"
+            ]
+        ]
+    },
+    {
+        "id": "4a5f422bd8b69ccf",
+        "type": "ui-notification",
+        "z": "7eac0d34c6842661",
+        "ui": "0a82d6cde910b9ce",
+        "position": "top right",
+        "colorDefault": true,
+        "color": "#000000",
+        "displayTime": "3",
+        "showCountdown": true,
+        "outputs": 1,
+        "allowDismiss": true,
+        "dismissText": "Close",
+        "allowConfirm": false,
+        "confirmText": "Confirm",
+        "raw": false,
+        "className": "",
+        "name": "",
+        "x": 1680,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e2af7c4b284ed16e",
+        "type": "yaml",
+        "z": "7eac0d34c6842661",
+        "property": "payload",
+        "name": "",
+        "x": 2290,
+        "y": 440,
+        "wires": [
+            [
+                "d3ea18fa6f17e54a",
+                "47f587318557bdf9"
+            ]
+        ]
+    },
+    {
+        "id": "fc233579cf804a40",
+        "type": "file in",
+        "z": "7eac0d34c6842661",
+        "name": "",
+        "filename": "path",
+        "filenameType": "msg",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 2140,
+        "y": 440,
+        "wires": [
+            [
+                "e2af7c4b284ed16e"
+            ]
+        ]
+    },
+    {
+        "id": "dc0d48b2f00683af",
+        "type": "exec",
+        "z": "7eac0d34c6842661",
+        "command": "ls bags",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 1320,
+        "y": 440,
+        "wires": [
+            [
+                "9e3011a5e9bb0cff",
+                "d389cfe6813fb929",
+                "c42c624909f04156"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "779fb24e15e1cf94",
+        "type": "function",
+        "z": "7eac0d34c6842661",
+        "name": "function 5",
+        "func": "msg.path = \"bags/\" + msg.payload +\"/metadata.yaml\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1980,
+        "y": 440,
+        "wires": [
+            [
+                "fc233579cf804a40"
+            ]
+        ]
+    },
+    {
+        "id": "e796245a752b45d6",
+        "type": "inject",
+        "z": "7eac0d34c6842661",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1100,
+        "y": 440,
+        "wires": [
+            [
+                "dc0d48b2f00683af"
+            ]
+        ]
+    },
+    {
+        "id": "9e3011a5e9bb0cff",
+        "type": "function",
+        "z": "7eac0d34c6842661",
+        "name": "function 8",
+        "func": "msg.ui_update = {};\n\nlet str = msg.payload;\nlet options = str.split('\\n');\noptions.pop();\n\nmsg.ui_update.options = []\noptions.forEach(function(element) {\n    msg.ui_update.options.push(\n        {\n            value: element\n        }\n    )\n});\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1180,
+        "y": 820,
+        "wires": [
+            [
+                "b28498b9c68057ed"
+            ]
+        ]
+    },
+    {
+        "id": "b28498b9c68057ed",
+        "type": "ui-dropdown",
+        "z": "7eac0d34c6842661",
+        "group": "5f6433eaaffe09b8",
+        "name": "",
+        "label": "Select Bag to playback",
+        "tooltip": "",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "multiple": false,
+        "chips": false,
+        "clearable": false,
+        "options": [],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "typeIsComboBox": true,
+        "msgTrigger": "onChange",
+        "x": 1380,
+        "y": 820,
+        "wires": [
+            [
+                "4380c87ec9a75d8c"
+            ]
+        ]
+    },
+    {
+        "id": "0894658fb8624d8e",
+        "type": "ui-table",
+        "z": "7eac0d34c6842661",
+        "group": "819c0672e591b0ca",
+        "name": "",
+        "label": "",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "maxrows": 0,
+        "passthru": false,
+        "autocols": true,
+        "showSearch": true,
+        "deselect": true,
+        "selectionType": "none",
+        "columns": [],
+        "mobileBreakpoint": "sm",
+        "mobileBreakpointType": "defaults",
+        "action": "append",
+        "className": "",
+        "x": 2650,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d3ea18fa6f17e54a",
+        "type": "debug",
+        "z": "7eac0d34c6842661",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2480,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "afc2bd05f2e8482c",
+        "type": "ui-button",
+        "z": "7eac0d34c6842661",
+        "group": "819c0672e591b0ca",
+        "name": "",
+        "label": "clear",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "[]",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 1610,
+        "y": 660,
+        "wires": [
+            [
+                "c42c624909f04156"
+            ]
+        ]
+    },
+    {
+        "id": "d389cfe6813fb929",
+        "type": "split",
+        "z": "7eac0d34c6842661",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": true,
+        "addname": "",
+        "property": "payload",
+        "x": 1740,
+        "y": 280,
+        "wires": [
+            [
+                "779fb24e15e1cf94"
+            ]
+        ]
+    },
+    {
+        "id": "47f587318557bdf9",
+        "type": "function",
+        "z": "7eac0d34c6842661",
+        "name": "function 9",
+        "func": "const info = msg.payload.rosbag2_bagfile_information;\n\nmsg.payload = [{\n    name: info.relative_file_paths[0].replace(\".mcap\", \"\"),\n    duration: (info.duration.nanoseconds / 1e9).toFixed(2) + \" s\",\n    messages: info.message_count,\n    topics: info.topics_with_message_count.length,\n    storage: info.storage_identifier,\n    distro: info.ros_distro\n}];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2440,
+        "y": 500,
+        "wires": [
+            [
+                "0894658fb8624d8e",
+                "32b1fb3fd5d45385"
+            ]
+        ]
+    },
+    {
+        "id": "32b1fb3fd5d45385",
+        "type": "debug",
+        "z": "7eac0d34c6842661",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2670,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "c42c624909f04156",
+        "type": "function",
+        "z": "7eac0d34c6842661",
+        "name": "function 10",
+        "func": "msg.payload = [];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1890,
+        "y": 600,
+        "wires": [
+            [
+                "0894658fb8624d8e"
+            ]
+        ]
+    },
+    {
+        "id": "35724e8a79eb4580",
+        "type": "ui-button",
+        "z": "7eac0d34c6842661",
+        "group": "819c0672e591b0ca",
+        "name": "",
+        "label": "populate",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 1120,
+        "y": 520,
+        "wires": [
+            [
+                "dc0d48b2f00683af"
+            ]
+        ]
+    },
+    {
+        "id": "8e65fa084b0fff2a",
+        "type": "delay",
+        "z": "7eac0d34c6842661",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "50",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1230,
+        "y": 360,
+        "wires": [
+            [
+                "dc0d48b2f00683af"
+            ]
+        ]
+    },
+    {
+        "id": "4380c87ec9a75d8c",
+        "type": "exec",
+        "z": "7eac0d34c6842661",
+        "command": "ls bags",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 1640,
+        "y": 820,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "4d8a2e2e37a13832",
+        "type": "ui-table",
+        "z": "7eac0d34c6842661",
+        "group": "8fa215b2d22c10a1",
+        "name": "",
+        "label": "Topics",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "maxrows": 0,
+        "passthru": false,
+        "autocols": true,
+        "showSearch": true,
+        "deselect": true,
+        "selectionType": "checkbox",
+        "columns": [
+            {
+                "title": "",
+                "key": "name",
+                "keyType": "key",
+                "type": "text",
+                "width": "",
+                "align": "start"
+            },
+            {
+                "title": "",
+                "key": "type",
+                "keyType": "key",
+                "type": "text",
+                "width": "",
+                "align": "start"
+            },
+            {
+                "title": "Select",
+                "key": "isSelected",
+                "keyType": "key",
+                "type": "button",
+                "width": "",
+                "align": "start"
+            }
+        ],
+        "mobileBreakpoint": "sm",
+        "mobileBreakpointType": "defaults",
+        "action": "append",
+        "className": "",
+        "x": 810,
+        "y": 300,
+        "wires": [
+            [
+                "b76e0a6199ea5893"
+            ]
+        ]
+    },
+    {
+        "id": "a1723a3f219aec55",
+        "type": "ui-button",
+        "z": "7eac0d34c6842661",
+        "group": "8fa215b2d22c10a1",
+        "name": "",
+        "label": "clear",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "emulateClick": true,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "[]",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 510,
+        "y": 320,
+        "wires": [
+            [
+                "4d8a2e2e37a13832"
+            ]
+        ]
+    },
+    {
+        "id": "46214fd49d9e1022",
+        "type": "ui-button",
+        "z": "7eac0d34c6842661",
+        "group": "8fa215b2d22c10a1",
+        "name": "",
+        "label": "populate",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "emulateClick": true,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 120,
+        "y": 240,
+        "wires": [
+            [
+                "2e73d3539b370f2e"
+            ]
+        ]
+    },
+    {
+        "id": "65046d2db7f2b2b2",
+        "type": "function",
+        "z": "7eac0d34c6842661",
+        "name": "function 11",
+        "func": "let split = msg.payload.split(\" \")\n\nmsg.payload = [{\n    name: split[0],\n    type: split[1]\n}];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 240,
+        "wires": [
+            [
+                "4d8a2e2e37a13832"
+            ]
+        ]
+    },
+    {
+        "id": "b76e0a6199ea5893",
+        "type": "ui-notification",
+        "z": "7eac0d34c6842661",
+        "ui": "0a82d6cde910b9ce",
+        "position": "top right",
+        "colorDefault": true,
+        "color": "#000000",
+        "displayTime": "3",
+        "showCountdown": true,
+        "outputs": 1,
+        "allowDismiss": true,
+        "dismissText": "Close",
+        "allowConfirm": false,
+        "confirmText": "Confirm",
+        "raw": false,
+        "className": "",
+        "name": "",
+        "x": 870,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a024c7f35c51da3c",
+        "type": "function",
+        "z": "7eac0d34c6842661",
+        "name": "function 12",
+        "func": "let topic = flow.get(\"topic\") || {};\n\ntopic[msg.topic] = msg.payload;\n\nflow.set(\"topic\", topic);\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 730,
+        "y": 100,
         "wires": [
             []
         ]

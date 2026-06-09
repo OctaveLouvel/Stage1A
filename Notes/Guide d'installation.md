@@ -1,6 +1,6 @@
 # Outils
 ## Node-red
-`$ node-red -u .node-red`
+`$ node-red -u node-red`
 Permet de faire l'ihm avec un connection Ros directe
 
 ## Distrobox
@@ -60,7 +60,7 @@ Pour faire tourner l'inverse kinematic
 sudo apt install ros-jazzy-librealsense2
 sudo apt install ros-jazzy-realsense2-camera
 git clone https://github.com/realsenseai/realsense-ros.git
-rosdep install -i --from-path src --rosdistro $ROS_DISTRO --skip-keys=librealsense2 -y
+rosdep install -i --from-path src --rosdistro jazzy --skip-keys=librealsense2 -y
 ```
 
 To run it `ros2 run realsense2_camera realsense2_camera_node`
