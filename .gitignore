@@ -3,4 +3,4 @@ build
 install
 log
 lib
-node-modules
+node_modules
