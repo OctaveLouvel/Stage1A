@@ -1,0 +1,22 @@
+[1.696s] Invoking command in '/home/auguste/Code/Stage/Stage_Univ_S1/ws/src/force_package/src/ur_motion_manager': DEBUGINFOD_URLS=https://debuginfod.archlinux.org PYTHONPATH=/home/auguste/Code/Stage/Stage_Univ_S1/ws/build/ur_motion_manager/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/auguste/Code/Stage/Stage_Univ_S1/ws/install/ur_motion_manager/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../../build/ur_motion_manager build --build-base /home/auguste/Code/Stage/Stage_Univ_S1/ws/build/ur_motion_manager/build install --record /home/auguste/Code/Stage/Stage_Univ_S1/ws/build/ur_motion_manager/install.log --single-version-externally-managed install_data
+[1.963s] running egg_info
+[1.984s] writing ../../../../build/ur_motion_manager/ur_motion_manager.egg-info/PKG-INFO
+[1.985s] writing dependency_links to ../../../../build/ur_motion_manager/ur_motion_manager.egg-info/dependency_links.txt
+[1.985s] writing entry points to ../../../../build/ur_motion_manager/ur_motion_manager.egg-info/entry_points.txt
+[1.985s] writing requirements to ../../../../build/ur_motion_manager/ur_motion_manager.egg-info/requires.txt
+[1.985s] writing top-level names to ../../../../build/ur_motion_manager/ur_motion_manager.egg-info/top_level.txt
+[2.027s] reading manifest file '../../../../build/ur_motion_manager/ur_motion_manager.egg-info/SOURCES.txt'
+[2.028s] writing manifest file '../../../../build/ur_motion_manager/ur_motion_manager.egg-info/SOURCES.txt'
+[2.028s] running build
+[2.028s] running build_py
+[2.029s] running install
+[2.035s] running install_lib
+[2.057s] running install_data
+[2.057s] running install_egg_info
+[2.078s] removing '/home/auguste/Code/Stage/Stage_Univ_S1/ws/install/ur_motion_manager/lib/python3.12/site-packages/ur_motion_manager-0.0.0-py3.12.egg-info' (and everything under it)
+[2.078s] Copying ../../../../build/ur_motion_manager/ur_motion_manager.egg-info to /home/auguste/Code/Stage/Stage_Univ_S1/ws/install/ur_motion_manager/lib/python3.12/site-packages/ur_motion_manager-0.0.0-py3.12.egg-info
+[2.079s] running install_scripts
+[2.220s] Installing motion_manager_node script to /home/auguste/Code/Stage/Stage_Univ_S1/ws/install/ur_motion_manager/lib/ur_motion_manager
+[2.220s] Installing teach_node script to /home/auguste/Code/Stage/Stage_Univ_S1/ws/install/ur_motion_manager/lib/ur_motion_manager
+[2.220s] writing list of installed files to '/home/auguste/Code/Stage/Stage_Univ_S1/ws/build/ur_motion_manager/install.log'
+[2.273s] Invoked command in '/home/auguste/Code/Stage/Stage_Univ_S1/ws/src/force_package/src/ur_motion_manager' returned '0': DEBUGINFOD_URLS=https://debuginfod.archlinux.org PYTHONPATH=/home/auguste/Code/Stage/Stage_Univ_S1/ws/build/ur_motion_manager/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/auguste/Code/Stage/Stage_Univ_S1/ws/install/ur_motion_manager/lib/python3.12/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../../build/ur_motion_manager build --build-base /home/auguste/Code/Stage/Stage_Univ_S1/ws/build/ur_motion_manager/build install --record /home/auguste/Code/Stage/Stage_Univ_S1/ws/build/ur_motion_manager/install.log --single-version-externally-managed install_data

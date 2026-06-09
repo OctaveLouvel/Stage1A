@@ -1,0 +1,3 @@
+[console_scripts]
+motion_manager_node = ur_motion_manager.motion_manager_node:main
+teach_node = ur_motion_manager.teach_node:main

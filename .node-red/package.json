@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@chart-sg/node-red-ros2": "~1.0.0",
+    "@chart-sg/node-red-ros2-manager": "^1.0.1",
+    "@flowfuse/node-red-dashboard": "~1.30.2"
+  }
+}

@@ -1,0 +1,35 @@
+running egg_info
+creating ../../build/pose_to_moveit/pose_to_moveit.egg-info
+writing ../../build/pose_to_moveit/pose_to_moveit.egg-info/PKG-INFO
+writing dependency_links to ../../build/pose_to_moveit/pose_to_moveit.egg-info/dependency_links.txt
+writing entry points to ../../build/pose_to_moveit/pose_to_moveit.egg-info/entry_points.txt
+writing requirements to ../../build/pose_to_moveit/pose_to_moveit.egg-info/requires.txt
+writing top-level names to ../../build/pose_to_moveit/pose_to_moveit.egg-info/top_level.txt
+writing manifest file '../../build/pose_to_moveit/pose_to_moveit.egg-info/SOURCES.txt'
+reading manifest file '../../build/pose_to_moveit/pose_to_moveit.egg-info/SOURCES.txt'
+writing manifest file '../../build/pose_to_moveit/pose_to_moveit.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/auguste/Code/Stage/Stage_Univ_S1/ws/build/pose_to_moveit/build
+creating /home/auguste/Code/Stage/Stage_Univ_S1/ws/build/pose_to_moveit/build/lib
+creating /home/auguste/Code/Stage/Stage_Univ_S1/ws/build/pose_to_moveit/build/lib/pose_to_moveit
+copying pose_to_moveit/__init__.py -> /home/auguste/Code/Stage/Stage_Univ_S1/ws/build/pose_to_moveit/build/lib/pose_to_moveit
+copying pose_to_moveit/pose_to_moveit_node.py -> /home/auguste/Code/Stage/Stage_Univ_S1/ws/build/pose_to_moveit/build/lib/pose_to_moveit
+running install
+running install_lib
+creating /home/auguste/Code/Stage/Stage_Univ_S1/ws/install/pose_to_moveit/lib/python3.12/site-packages/pose_to_moveit
+copying /home/auguste/Code/Stage/Stage_Univ_S1/ws/build/pose_to_moveit/build/lib/pose_to_moveit/__init__.py -> /home/auguste/Code/Stage/Stage_Univ_S1/ws/install/pose_to_moveit/lib/python3.12/site-packages/pose_to_moveit
+copying /home/auguste/Code/Stage/Stage_Univ_S1/ws/build/pose_to_moveit/build/lib/pose_to_moveit/pose_to_moveit_node.py -> /home/auguste/Code/Stage/Stage_Univ_S1/ws/install/pose_to_moveit/lib/python3.12/site-packages/pose_to_moveit
+byte-compiling /home/auguste/Code/Stage/Stage_Univ_S1/ws/install/pose_to_moveit/lib/python3.12/site-packages/pose_to_moveit/__init__.py to __init__.cpython-312.pyc
+byte-compiling /home/auguste/Code/Stage/Stage_Univ_S1/ws/install/pose_to_moveit/lib/python3.12/site-packages/pose_to_moveit/pose_to_moveit_node.py to pose_to_moveit_node.cpython-312.pyc
+running install_data
+creating /home/auguste/Code/Stage/Stage_Univ_S1/ws/install/pose_to_moveit/share/ament_index
+creating /home/auguste/Code/Stage/Stage_Univ_S1/ws/install/pose_to_moveit/share/ament_index/resource_index
+creating /home/auguste/Code/Stage/Stage_Univ_S1/ws/install/pose_to_moveit/share/ament_index/resource_index/packages
+copying resource/pose_to_moveit -> /home/auguste/Code/Stage/Stage_Univ_S1/ws/install/pose_to_moveit/share/ament_index/resource_index/packages
+copying package.xml -> /home/auguste/Code/Stage/Stage_Univ_S1/ws/install/pose_to_moveit/share/pose_to_moveit
+running install_egg_info
+Copying ../../build/pose_to_moveit/pose_to_moveit.egg-info to /home/auguste/Code/Stage/Stage_Univ_S1/ws/install/pose_to_moveit/lib/python3.12/site-packages/pose_to_moveit-0.0.0-py3.12.egg-info
+running install_scripts
+Installing pose_to_moveit_node script to /home/auguste/Code/Stage/Stage_Univ_S1/ws/install/pose_to_moveit/lib/pose_to_moveit
+writing list of installed files to '/home/auguste/Code/Stage/Stage_Univ_S1/ws/build/pose_to_moveit/install.log'

@@ -1,0 +1,2 @@
+[console_scripts]
+pose_to_moveit_node = pose_to_moveit.pose_to_moveit_node:main
