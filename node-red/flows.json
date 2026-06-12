@@ -45,7 +45,7 @@
             "472ac383abe82e21",
             "684a4d86441756cd"
         ],
-        "x": 54,
+        "x": 14,
         "y": 59,
         "w": 952,
         "h": 502
@@ -84,10 +84,145 @@
             "5de9a5720b7fb4f8",
             "0445fe2a66f40851"
         ],
-        "x": 1094,
-        "y": 59,
+        "x": 1274,
+        "y": 399,
         "w": 932,
         "h": 802
+    },
+    {
+        "id": "db6e9ffd1ee575de",
+        "type": "group",
+        "z": "7eac0d34c6842661",
+        "name": "Topic selection",
+        "style": {
+            "fill": "#dbcbe7",
+            "label": true
+        },
+        "nodes": [
+            "2e73d3539b370f2e",
+            "ad063e52d51fec2f",
+            "5698da2f9ab4c85e",
+            "68b1bfde2bfbaa49",
+            "4d8a2e2e37a13832",
+            "a1723a3f219aec55",
+            "46214fd49d9e1022",
+            "a024c7f35c51da3c",
+            "36a3fe263df9fbab",
+            "9e0d58542b489367"
+        ],
+        "x": 14,
+        "y": 59,
+        "w": 932,
+        "h": 222
+    },
+    {
+        "id": "86aa23bf3b1e6449",
+        "type": "group",
+        "z": "7eac0d34c6842661",
+        "name": "Record bag",
+        "style": {
+            "fill": "#ffffbf",
+            "label": true
+        },
+        "nodes": [
+            "644156479f22f0c9",
+            "7194f46e9a5190e2",
+            "09491869ce0a5c8d",
+            "1db2200d08c777e6",
+            "77458c416232bac4",
+            "4a5f422bd8b69ccf",
+            "e2af7c4b284ed16e",
+            "fc233579cf804a40",
+            "dc0d48b2f00683af",
+            "779fb24e15e1cf94",
+            "9e3011a5e9bb0cff",
+            "b28498b9c68057ed",
+            "0894658fb8624d8e",
+            "afc2bd05f2e8482c",
+            "d389cfe6813fb929",
+            "47f587318557bdf9",
+            "35724e8a79eb4580",
+            "8e65fa084b0fff2a",
+            "6c77795a704531a6",
+            "b4bac91564af5c7f",
+            "ec278fe61b7f2736",
+            "ea38035bc9213be6"
+        ],
+        "x": 14,
+        "y": 311.5,
+        "w": 1492,
+        "h": 409.5
+    },
+    {
+        "id": "4c874896217ac7b4",
+        "type": "group",
+        "z": "37999168f7331a03",
+        "name": "Set position inverse kinematics",
+        "style": {
+            "label": true,
+            "fill": "#dbcbe7"
+        },
+        "nodes": [
+            "827521128ba2a3b5",
+            "9eda2d1fea34245a",
+            "4a638d86ef5e8668",
+            "97968317caf492ac",
+            "003e159c343fc4ce",
+            "3af1b62d749f811d",
+            "dddd74cf2d2572b7",
+            "bd4f6896a346efbf",
+            "74e42fc3b107c7df",
+            "a43072f68d7879d0",
+            "ad5d98db099f9bd8",
+            "a29c9b80fdf3fb62",
+            "dc40da18fe1a285a",
+            "fdc26c8430a05c37",
+            "66f09747baa259ac",
+            "b6806d742e39d6fb",
+            "58058860c6c9c34e",
+            "d77407cef4a106c5",
+            "ad7d9b5fd90f4a68",
+            "8f4ff7d9fc1da06e",
+            "457a6559686f5de2",
+            "75f77fca1b1272ec",
+            "a43e00118f8bbb05",
+            "876a3bba54fc945c",
+            "657ee7743a3c8107",
+            "2c18ecb55d7cde61",
+            "33b204ca5682175a",
+            "a2246a073cbad85d"
+        ],
+        "x": 14,
+        "y": 599,
+        "w": 1212,
+        "h": 562
+    },
+    {
+        "id": "80473e158615c07b",
+        "type": "group",
+        "z": "37999168f7331a03",
+        "name": "Affichage caméra",
+        "style": {
+            "fill": "#ffffbf",
+            "label": true
+        },
+        "nodes": [
+            "5f2a5969dbf68176",
+            "9dc34fdcdc9981d0",
+            "e34aea13825b7d02",
+            "7270a4ed88f9e32f",
+            "9259c0b0397596f1",
+            "d1df697965558511",
+            "3e832aa260cde4be",
+            "42145458cfe2a7f2",
+            "1fba95fd6322f2c6",
+            "df23868f08518eac",
+            "861ee3faf20193d5"
+        ],
+        "x": 994,
+        "y": 71.5,
+        "w": 1292,
+        "h": 289.5
     },
     {
         "id": "0a82d6cde910b9ce",
@@ -115,8 +250,8 @@
         "name": "Default Theme",
         "colors": {
             "surface": "#ffffff",
-            "primary": "#0094CE",
-            "bgPage": "#eeeeee",
+            "primary": "#b5835a",
+            "bgPage": "#deddda",
             "groupBg": "#ffffff",
             "groupOutline": "#cccccc"
         },
@@ -261,7 +396,7 @@
         "ui": "0a82d6cde910b9ce",
         "path": "/page2",
         "icon": "camera",
-        "layout": "grid",
+        "layout": "flex",
         "theme": "cfa065d11e3b61bc",
         "breakpoints": [
             {
@@ -360,7 +495,7 @@
         "colorTrack": "",
         "colorThumb": "",
         "showTextField": false,
-        "x": 170,
+        "x": 130,
         "y": 280,
         "wires": [
             [
@@ -396,7 +531,7 @@
         "colorTrack": "",
         "colorThumb": "",
         "showTextField": false,
-        "x": 190,
+        "x": 150,
         "y": 340,
         "wires": [
             [
@@ -432,7 +567,7 @@
         "colorTrack": "",
         "colorThumb": "",
         "showTextField": false,
-        "x": 180,
+        "x": 140,
         "y": 400,
         "wires": [
             [
@@ -468,7 +603,7 @@
         "colorTrack": "",
         "colorThumb": "",
         "showTextField": false,
-        "x": 180,
+        "x": 140,
         "y": 460,
         "wires": [
             [
@@ -504,7 +639,7 @@
         "colorTrack": "",
         "colorThumb": "",
         "showTextField": false,
-        "x": 180,
+        "x": 140,
         "y": 520,
         "wires": [
             [
@@ -525,7 +660,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 600,
+        "x": 540,
         "y": 360,
         "wires": [
             []
@@ -563,7 +698,7 @@
         "enablePointerup": false,
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
-        "x": 150,
+        "x": 110,
         "y": 100,
         "wires": [
             [
@@ -584,7 +719,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 360,
+        "x": 320,
         "y": 100,
         "wires": [
             [
@@ -599,7 +734,7 @@
         "g": "2d2a5e96dc4978ef",
         "ros2pkg": "trajectory_msgs",
         "ros2message": "JointTrajectory",
-        "x": 650,
+        "x": 610,
         "y": 100,
         "wires": [
             [
@@ -627,7 +762,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 350,
+        "x": 310,
         "y": 220,
         "wires": [
             [
@@ -655,7 +790,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 350,
+        "x": 310,
         "y": 280,
         "wires": [
             [
@@ -683,7 +818,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 350,
+        "x": 310,
         "y": 340,
         "wires": [
             [
@@ -711,7 +846,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 350,
+        "x": 310,
         "y": 400,
         "wires": [
             [
@@ -739,7 +874,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 350,
+        "x": 310,
         "y": 460,
         "wires": [
             [
@@ -767,7 +902,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 350,
+        "x": 310,
         "y": 520,
         "wires": [
             [
@@ -782,8 +917,8 @@
         "g": "f6ed4aabf676c162",
         "ros2pkg": "sensor_msgs",
         "ros2message": "JointState",
-        "x": 1230,
-        "y": 460,
+        "x": 1410,
+        "y": 800,
         "wires": [
             [
                 "69311a6ea589cc66"
@@ -799,8 +934,8 @@
         "ros2_config": "21747916cf925f88",
         "props": [],
         "selectedtype": "sensor_msgs/msg/JointState",
-        "x": 1470,
-        "y": 460,
+        "x": 1650,
+        "y": 800,
         "wires": [
             [
                 "d5acd84142090c52",
@@ -822,8 +957,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1690,
-        "y": 200,
+        "x": 1870,
+        "y": 540,
         "wires": [
             [
                 "e630ec1249b6f443"
@@ -873,7 +1008,7 @@
         "colorTrack": "",
         "colorThumb": "",
         "showTextField": false,
-        "x": 160,
+        "x": 120,
         "y": 220,
         "wires": [
             [
@@ -902,8 +1037,8 @@
         "className": "",
         "value": "payload",
         "valueType": "msg",
-        "x": 1920,
-        "y": 100,
+        "x": 2100,
+        "y": 440,
         "wires": []
     },
     {
@@ -927,8 +1062,8 @@
         "className": "",
         "value": "payload",
         "valueType": "msg",
-        "x": 1910,
-        "y": 140,
+        "x": 2090,
+        "y": 480,
         "wires": []
     },
     {
@@ -952,8 +1087,8 @@
         "className": "",
         "value": "payload",
         "valueType": "msg",
-        "x": 1890,
-        "y": 180,
+        "x": 2070,
+        "y": 520,
         "wires": []
     },
     {
@@ -977,8 +1112,8 @@
         "className": "",
         "value": "payload",
         "valueType": "msg",
-        "x": 1900,
-        "y": 220,
+        "x": 2080,
+        "y": 560,
         "wires": []
     },
     {
@@ -1002,8 +1137,8 @@
         "className": "",
         "value": "payload",
         "valueType": "msg",
-        "x": 1900,
-        "y": 260,
+        "x": 2080,
+        "y": 600,
         "wires": []
     },
     {
@@ -1027,8 +1162,8 @@
         "className": "",
         "value": "payload",
         "valueType": "msg",
-        "x": 1900,
-        "y": 300,
+        "x": 2080,
+        "y": 640,
         "wires": []
     },
     {
@@ -1044,8 +1179,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1690,
-        "y": 460,
+        "x": 1870,
+        "y": 800,
         "wires": [
             [
                 "ec9c7cf577d7d3c2"
@@ -1088,8 +1223,8 @@
         "className": "",
         "value": "payload",
         "valueType": "msg",
-        "x": 1920,
-        "y": 360,
+        "x": 2100,
+        "y": 700,
         "wires": []
     },
     {
@@ -1113,8 +1248,8 @@
         "className": "",
         "value": "payload",
         "valueType": "msg",
-        "x": 1910,
-        "y": 400,
+        "x": 2090,
+        "y": 740,
         "wires": []
     },
     {
@@ -1138,8 +1273,8 @@
         "className": "",
         "value": "payload",
         "valueType": "msg",
-        "x": 1890,
-        "y": 440,
+        "x": 2070,
+        "y": 780,
         "wires": []
     },
     {
@@ -1163,8 +1298,8 @@
         "className": "",
         "value": "payload",
         "valueType": "msg",
-        "x": 1900,
-        "y": 480,
+        "x": 2080,
+        "y": 820,
         "wires": []
     },
     {
@@ -1188,8 +1323,8 @@
         "className": "",
         "value": "payload",
         "valueType": "msg",
-        "x": 1900,
-        "y": 520,
+        "x": 2080,
+        "y": 860,
         "wires": []
     },
     {
@@ -1213,8 +1348,8 @@
         "className": "",
         "value": "payload",
         "valueType": "msg",
-        "x": 1900,
-        "y": 560,
+        "x": 2080,
+        "y": 900,
         "wires": []
     },
     {
@@ -1230,8 +1365,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1690,
-        "y": 720,
+        "x": 1870,
+        "y": 1060,
         "wires": [
             [
                 "3ac78f8cc1edb040"
@@ -1274,8 +1409,8 @@
         "className": "",
         "value": "payload",
         "valueType": "msg",
-        "x": 1920,
-        "y": 620,
+        "x": 2100,
+        "y": 960,
         "wires": []
     },
     {
@@ -1299,8 +1434,8 @@
         "className": "",
         "value": "payload",
         "valueType": "msg",
-        "x": 1910,
-        "y": 660,
+        "x": 2090,
+        "y": 1000,
         "wires": []
     },
     {
@@ -1324,8 +1459,8 @@
         "className": "",
         "value": "payload",
         "valueType": "msg",
-        "x": 1890,
-        "y": 700,
+        "x": 2070,
+        "y": 1040,
         "wires": []
     },
     {
@@ -1349,8 +1484,8 @@
         "className": "",
         "value": "payload",
         "valueType": "msg",
-        "x": 1900,
-        "y": 740,
+        "x": 2080,
+        "y": 1080,
         "wires": []
     },
     {
@@ -1374,8 +1509,8 @@
         "className": "",
         "value": "payload",
         "valueType": "msg",
-        "x": 1900,
-        "y": 780,
+        "x": 2080,
+        "y": 1120,
         "wires": []
     },
     {
@@ -1399,8 +1534,8 @@
         "className": "",
         "value": "payload",
         "valueType": "msg",
-        "x": 1900,
-        "y": 820,
+        "x": 2080,
+        "y": 1160,
         "wires": []
     },
     {
@@ -1435,7 +1570,7 @@
         "enablePointerup": false,
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
-        "x": 150,
+        "x": 110,
         "y": 160,
         "wires": [
             [
@@ -1456,7 +1591,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 370,
+        "x": 330,
         "y": 160,
         "wires": [
             [
@@ -1468,6 +1603,7 @@
         "id": "d77407cef4a106c5",
         "type": "function",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "name": "function 1",
         "func": "let pos = flow.get(\"pos\") || {x: 0,y: 0, z: 0};\nlet rot = flow.get(\"rot\") || { x: 0, y: 0, z: 0, w: 0};\n\nmsg.payload = {\n    header: {\n        frame_id: \"base_link\"\n    },\n    pose: {\n        position: pos,\n        orientation: rot\n    }\n};\n\nreturn msg;",
         "outputs": 1,
@@ -1476,8 +1612,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 340,
-        "y": 1140,
+        "x": 320,
+        "y": 1000,
         "wires": [
             [
                 "8f4ff7d9fc1da06e"
@@ -1488,6 +1624,7 @@
         "id": "9eda2d1fea34245a",
         "type": "ui-number-input",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "group": "911a8391df042a1b",
         "name": "",
         "label": "x",
@@ -1511,8 +1648,8 @@
         "iconPosition": "left",
         "iconInnerPosition": "inside",
         "spinner": "stacked",
-        "x": 130,
-        "y": 720,
+        "x": 90,
+        "y": 640,
         "wires": [
             [
                 "827521128ba2a3b5"
@@ -1523,6 +1660,7 @@
         "id": "4a638d86ef5e8668",
         "type": "ui-number-input",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "group": "911a8391df042a1b",
         "name": "",
         "label": "y",
@@ -1546,8 +1684,8 @@
         "iconPosition": "left",
         "iconInnerPosition": "inside",
         "spinner": "stacked",
-        "x": 130,
-        "y": 760,
+        "x": 90,
+        "y": 680,
         "wires": [
             [
                 "003e159c343fc4ce"
@@ -1558,6 +1696,7 @@
         "id": "97968317caf492ac",
         "type": "ui-number-input",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "group": "911a8391df042a1b",
         "name": "",
         "label": "z",
@@ -1581,8 +1720,8 @@
         "iconPosition": "left",
         "iconInnerPosition": "inside",
         "spinner": "stacked",
-        "x": 130,
-        "y": 800,
+        "x": 90,
+        "y": 720,
         "wires": [
             [
                 "3af1b62d749f811d"
@@ -1593,6 +1732,7 @@
         "id": "827521128ba2a3b5",
         "type": "change",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "name": "",
         "rules": [
             {
@@ -1608,8 +1748,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 330,
-        "y": 720,
+        "x": 250,
+        "y": 640,
         "wires": [
             [
                 "a43072f68d7879d0"
@@ -1620,6 +1760,7 @@
         "id": "003e159c343fc4ce",
         "type": "change",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "name": "",
         "rules": [
             {
@@ -1635,8 +1776,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 330,
-        "y": 760,
+        "x": 250,
+        "y": 680,
         "wires": [
             [
                 "a43072f68d7879d0"
@@ -1647,6 +1788,7 @@
         "id": "3af1b62d749f811d",
         "type": "change",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "name": "",
         "rules": [
             {
@@ -1662,8 +1804,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 330,
-        "y": 800,
+        "x": 250,
+        "y": 720,
         "wires": [
             [
                 "a43072f68d7879d0"
@@ -1674,6 +1816,7 @@
         "id": "dddd74cf2d2572b7",
         "type": "change",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "name": "",
         "rules": [
             {
@@ -1689,8 +1832,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 330,
-        "y": 880,
+        "x": 250,
+        "y": 800,
         "wires": [
             [
                 "ad5d98db099f9bd8"
@@ -1701,6 +1844,7 @@
         "id": "bd4f6896a346efbf",
         "type": "change",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "name": "",
         "rules": [
             {
@@ -1716,8 +1860,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 330,
-        "y": 920,
+        "x": 250,
+        "y": 840,
         "wires": [
             [
                 "ad5d98db099f9bd8"
@@ -1728,6 +1872,7 @@
         "id": "74e42fc3b107c7df",
         "type": "change",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "name": "",
         "rules": [
             {
@@ -1743,8 +1888,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 330,
-        "y": 960,
+        "x": 250,
+        "y": 880,
         "wires": [
             [
                 "ad5d98db099f9bd8"
@@ -1755,6 +1900,7 @@
         "id": "a43072f68d7879d0",
         "type": "function",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "name": "set_pos",
         "func": "let pos = flow.get(\"pos\") || {x: 0,y: 0, z: 0};\n\npos[msg.pos] = Number(msg.payload)/100;\n\nflow.set(\"pos\", pos);\n\nreturn null;",
         "outputs": 1,
@@ -1763,8 +1909,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 540,
-        "y": 760,
+        "x": 440,
+        "y": 680,
         "wires": [
             []
         ]
@@ -1773,6 +1919,7 @@
         "id": "ad7d9b5fd90f4a68",
         "type": "ui-button",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "group": "911a8391df042a1b",
         "name": "Valider point",
         "label": "Valider",
@@ -1800,8 +1947,8 @@
         "enablePointerup": false,
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
-        "x": 150,
-        "y": 1140,
+        "x": 130,
+        "y": 1000,
         "wires": [
             [
                 "d77407cef4a106c5"
@@ -1812,6 +1959,7 @@
         "id": "ad5d98db099f9bd8",
         "type": "function",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "name": "set_rot",
         "func": "let rot = flow.get(\"rot\") || { x: 0, y: 0, z: 0, w: 0};\n\nrot[msg.rot] = Number(msg.payload) * Math.PI / 180;\n\nflow.set(\"rot\", rot);\n\nreturn null;",
         "outputs": 1,
@@ -1820,8 +1968,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 530,
-        "y": 940,
+        "x": 430,
+        "y": 860,
         "wires": [
             []
         ]
@@ -1830,6 +1978,7 @@
         "id": "a29c9b80fdf3fb62",
         "type": "change",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "name": "",
         "rules": [
             {
@@ -1845,8 +1994,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 330,
-        "y": 1000,
+        "x": 250,
+        "y": 920,
         "wires": [
             [
                 "ad5d98db099f9bd8"
@@ -1857,6 +2006,7 @@
         "id": "dc40da18fe1a285a",
         "type": "ui-slider",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "group": "911a8391df042a1b",
         "name": "",
         "label": "rot x",
@@ -1880,8 +2030,8 @@
         "colorTrack": "",
         "colorThumb": "",
         "showTextField": false,
-        "x": 130,
-        "y": 880,
+        "x": 90,
+        "y": 800,
         "wires": [
             [
                 "dddd74cf2d2572b7"
@@ -1892,6 +2042,7 @@
         "id": "fdc26c8430a05c37",
         "type": "ui-slider",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "group": "911a8391df042a1b",
         "name": "",
         "label": "rot y",
@@ -1915,8 +2066,8 @@
         "colorTrack": "",
         "colorThumb": "",
         "showTextField": false,
-        "x": 130,
-        "y": 920,
+        "x": 90,
+        "y": 840,
         "wires": [
             [
                 "bd4f6896a346efbf"
@@ -1927,6 +2078,7 @@
         "id": "66f09747baa259ac",
         "type": "ui-slider",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "group": "911a8391df042a1b",
         "name": "",
         "label": "rot z",
@@ -1950,8 +2102,8 @@
         "colorTrack": "",
         "colorThumb": "",
         "showTextField": false,
-        "x": 130,
-        "y": 960,
+        "x": 90,
+        "y": 880,
         "wires": [
             [
                 "74e42fc3b107c7df"
@@ -1962,6 +2114,7 @@
         "id": "b6806d742e39d6fb",
         "type": "ui-slider",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "group": "911a8391df042a1b",
         "name": "",
         "label": "rot w",
@@ -1985,8 +2138,8 @@
         "colorTrack": "",
         "colorThumb": "",
         "showTextField": false,
-        "x": 130,
-        "y": 1000,
+        "x": 90,
+        "y": 920,
         "wires": [
             [
                 "a29c9b80fdf3fb62"
@@ -1997,6 +2150,7 @@
         "id": "75f77fca1b1272ec",
         "type": "switch",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "name": "",
         "property": "payload",
         "propertyType": "msg",
@@ -2013,8 +2167,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 750,
-        "y": 1240,
+        "x": 730,
+        "y": 1100,
         "wires": [
             [
                 "876a3bba54fc945c"
@@ -2028,6 +2182,7 @@
         "id": "a43e00118f8bbb05",
         "type": "ui-notification",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "ui": "0a82d6cde910b9ce",
         "position": "top right",
         "colorDefault": false,
@@ -2042,8 +2197,8 @@
         "raw": false,
         "className": "",
         "name": "position OK",
-        "x": 1130,
-        "y": 1200,
+        "x": 1110,
+        "y": 1080,
         "wires": [
             []
         ]
@@ -2052,12 +2207,13 @@
         "id": "58058860c6c9c34e",
         "type": "Publisher",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "topic": "/target_pose",
         "ros2_config": "21747916cf925f88",
         "props": [],
         "selectedtype": "geometry_msgs/msg/PoseStamped",
-        "x": 820,
-        "y": 1140,
+        "x": 800,
+        "y": 1000,
         "wires": [
             []
         ]
@@ -2066,10 +2222,11 @@
         "id": "8f4ff7d9fc1da06e",
         "type": "ROS2 Type",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "ros2pkg": "geometry_msgs",
         "ros2message": "PoseStamped",
-        "x": 570,
-        "y": 1140,
+        "x": 550,
+        "y": 1000,
         "wires": [
             [
                 "58058860c6c9c34e"
@@ -2080,6 +2237,7 @@
         "id": "876a3bba54fc945c",
         "type": "change",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "name": "",
         "rules": [
             {
@@ -2096,8 +2254,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 940,
-        "y": 1200,
+        "x": 920,
+        "y": 1080,
         "wires": [
             [
                 "a43e00118f8bbb05"
@@ -2113,7 +2271,7 @@
         "ros2_config": "21747916cf925f88",
         "props": [],
         "selectedtype": "trajectory_msgs/msg/JointTrajectory",
-        "x": 900,
+        "x": 860,
         "y": 100,
         "wires": [
             []
@@ -2123,12 +2281,13 @@
         "id": "657ee7743a3c8107",
         "type": "Subscriber",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "topic": "/move_result",
         "ros2_config": "21747916cf925f88",
         "props": [],
         "selectedtype": "std_msgs/msg/String",
-        "x": 370,
-        "y": 1240,
+        "x": 350,
+        "y": 1100,
         "wires": [
             [
                 "33b204ca5682175a"
@@ -2139,10 +2298,11 @@
         "id": "2c18ecb55d7cde61",
         "type": "ROS2 Type",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "ros2pkg": "std_msgs",
         "ros2message": "String",
-        "x": 160,
-        "y": 1240,
+        "x": 140,
+        "y": 1100,
         "wires": [
             [
                 "657ee7743a3c8107"
@@ -2153,6 +2313,7 @@
         "id": "33b204ca5682175a",
         "type": "function",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "name": "function 2",
         "func": "msg.payload = msg.payload.data;\n\nreturn msg;",
         "outputs": 1,
@@ -2161,8 +2322,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 580,
-        "y": 1240,
+        "x": 560,
+        "y": 1100,
         "wires": [
             [
                 "75f77fca1b1272ec"
@@ -2173,6 +2334,7 @@
         "id": "457a6559686f5de2",
         "type": "ui-notification",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "ui": "0a82d6cde910b9ce",
         "position": "top right",
         "colorDefault": false,
@@ -2187,8 +2349,8 @@
         "raw": false,
         "className": "",
         "name": "Position pas OK",
-        "x": 1140,
-        "y": 1280,
+        "x": 1120,
+        "y": 1120,
         "wires": [
             []
         ]
@@ -2197,6 +2359,7 @@
         "id": "a2246a073cbad85d",
         "type": "change",
         "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
         "name": "",
         "rules": [
             {
@@ -2213,8 +2376,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 940,
-        "y": 1280,
+        "x": 920,
+        "y": 1120,
         "wires": [
             [
                 "457a6559686f5de2"
@@ -2222,33 +2385,270 @@
         ]
     },
     {
+        "id": "5f2a5969dbf68176",
+        "type": "exec",
+        "z": "37999168f7331a03",
+        "g": "80473e158615c07b",
+        "command": "ros2 topic find sensor_msgs/msg/Image",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 1400,
+        "y": 280,
+        "wires": [
+            [
+                "3e832aa260cde4be"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "9dc34fdcdc9981d0",
+        "type": "exec",
+        "z": "37999168f7331a03",
+        "g": "80473e158615c07b",
+        "command": "ros2 run web_video_server web_video_server",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "true",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 1420,
+        "y": 120,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "e34aea13825b7d02",
+        "type": "inject",
+        "z": "37999168f7331a03",
+        "g": "80473e158615c07b",
+        "name": "Run vidéo server",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.2",
+        "topic": "",
+        "x": 1130,
+        "y": 120,
+        "wires": [
+            [
+                "9dc34fdcdc9981d0"
+            ]
+        ]
+    },
+    {
+        "id": "7270a4ed88f9e32f",
+        "type": "exec",
+        "z": "37999168f7331a03",
+        "g": "80473e158615c07b",
+        "command": "pkill -2 -f web_video_server",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "true",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 1360,
+        "y": 200,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "9259c0b0397596f1",
+        "type": "inject",
+        "z": "37999168f7331a03",
+        "g": "80473e158615c07b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1130,
+        "y": 200,
+        "wires": [
+            [
+                "7270a4ed88f9e32f"
+            ]
+        ]
+    },
+    {
+        "id": "d1df697965558511",
+        "type": "inject",
+        "z": "37999168f7331a03",
+        "g": "80473e158615c07b",
+        "name": "find topics",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "topic": "",
+        "x": 1130,
+        "y": 280,
+        "wires": [
+            [
+                "5f2a5969dbf68176"
+            ]
+        ]
+    },
+    {
+        "id": "3e832aa260cde4be",
+        "type": "function",
+        "z": "37999168f7331a03",
+        "g": "80473e158615c07b",
+        "name": "function 4",
+        "func": "const forbidden = [\n    \"depth\",\n    \"infra\",\n    \"compressed\",\n    \"compressedDepth\",\n    \"theora\",\n    \"zstd\",\n    \"metadata\",\n    \"camera_info\",\n    \"extrinsics\"\n];\n\nlet topics = msg.payload.split(\"\\n\");\n\ntopics = topics\n    .map(t => t.trim())\n    .filter(t =>\n        t.length > 0 &&\n        !forbidden.some(word => t.includes(word))\n    );\n\nmsg.ui_update = {};\n\nmsg.payload = \"\"\n\nmsg.ui_update.options = topics.map(topic => ({\n    value: \"http://localhost:8080/stream?topic=\" +\n           topic,\n    label: topic\n}));\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1700,
+        "y": 260,
+        "wires": [
+            [
+                "1fba95fd6322f2c6"
+            ]
+        ]
+    },
+    {
         "id": "42145458cfe2a7f2",
         "type": "ui-template",
         "z": "37999168f7331a03",
+        "g": "80473e158615c07b",
         "group": "28ca805dbd7d934e",
         "page": "",
         "ui": "",
         "name": "Affichage Caméra",
-        "order": 1,
+        "order": 2,
         "width": 0,
         "height": 0,
         "head": "",
-        "format": "<img src=\"http://localhost:8080/stream?topic=/camera/camera/color/image_raw\"\n     width=\"100%\">",
+        "format": "<template>\n    <img\n        v-if=\"msg.payload\"\n        :src=\"msg.payload + '&t=' + Date.now()\"\n        style=\"width:100%;border-radius:8px;\"\n    />\n\n        <v-alert v-else type=\"warning\" variant=\"tonal\">\n            Aucune caméra sélectionnée\n        </v-alert>\n\n</template>",
         "storeOutMessages": true,
         "passthru": true,
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 190,
-        "y": 640,
+        "x": 2170,
+        "y": 260,
         "wires": [
             []
         ]
     },
     {
+        "id": "1fba95fd6322f2c6",
+        "type": "ui-dropdown",
+        "z": "37999168f7331a03",
+        "g": "80473e158615c07b",
+        "group": "28ca805dbd7d934e",
+        "name": "",
+        "label": "Select Option:",
+        "tooltip": "",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "chips": false,
+        "clearable": true,
+        "options": [],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "typeIsComboBox": true,
+        "msgTrigger": "onChange",
+        "x": 1920,
+        "y": 260,
+        "wires": [
+            [
+                "42145458cfe2a7f2",
+                "861ee3faf20193d5"
+            ]
+        ]
+    },
+    {
+        "id": "df23868f08518eac",
+        "type": "inject",
+        "z": "37999168f7331a03",
+        "g": "80473e158615c07b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1950,
+        "y": 320,
+        "wires": [
+            [
+                "42145458cfe2a7f2"
+            ]
+        ]
+    },
+    {
+        "id": "861ee3faf20193d5",
+        "type": "debug",
+        "z": "37999168f7331a03",
+        "g": "80473e158615c07b",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2070,
+        "y": 200,
+        "wires": []
+    },
+    {
         "id": "2e73d3539b370f2e",
         "type": "exec",
         "z": "7eac0d34c6842661",
+        "g": "db6e9ffd1ee575de",
         "command": "ros2 topic list -t",
         "addpay": "",
         "append": "",
@@ -2258,7 +2658,7 @@
         "oldrc": false,
         "name": "",
         "x": 320,
-        "y": 180,
+        "y": 120,
         "wires": [
             [
                 "5698da2f9ab4c85e"
@@ -2271,6 +2671,7 @@
         "id": "ad063e52d51fec2f",
         "type": "inject",
         "z": "7eac0d34c6842661",
+        "g": "db6e9ffd1ee575de",
         "name": "",
         "props": [
             {
@@ -2288,8 +2689,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 100,
-        "y": 180,
+        "x": 120,
+        "y": 120,
         "wires": [
             [
                 "2e73d3539b370f2e"
@@ -2300,6 +2701,7 @@
         "id": "5698da2f9ab4c85e",
         "type": "split",
         "z": "7eac0d34c6842661",
+        "g": "db6e9ffd1ee575de",
         "name": "",
         "splt": "\\n",
         "spltType": "str",
@@ -2308,12 +2710,10 @@
         "stream": true,
         "addname": "",
         "property": "payload",
-        "x": 510,
-        "y": 160,
+        "x": 490,
+        "y": 100,
         "wires": [
             [
-                "68b1bfde2bfbaa49",
-                "65046d2db7f2b2b2",
                 "a024c7f35c51da3c"
             ]
         ]
@@ -2322,26 +2722,29 @@
         "id": "68b1bfde2bfbaa49",
         "type": "debug",
         "z": "7eac0d34c6842661",
+        "g": "db6e9ffd1ee575de",
         "name": "debug 4",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "false",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 720,
-        "y": 160,
+        "x": 840,
+        "y": 240,
         "wires": []
     },
     {
         "id": "644156479f22f0c9",
         "type": "ui-button",
         "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
         "group": "8fa215b2d22c10a1",
         "name": "",
         "label": "Start Recording",
-        "order": 7,
+        "order": 1,
         "width": 0,
         "height": 0,
         "emulateClick": false,
@@ -2365,8 +2768,8 @@
         "enablePointerup": false,
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
-        "x": 1100,
-        "y": 200,
+        "x": 120,
+        "y": 360,
         "wires": [
             [
                 "1db2200d08c777e6"
@@ -2377,10 +2780,11 @@
         "id": "7194f46e9a5190e2",
         "type": "ui-button",
         "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
         "group": "8fa215b2d22c10a1",
         "name": "",
         "label": "Stop Recording",
-        "order": 8,
+        "order": 3,
         "width": 0,
         "height": 0,
         "emulateClick": false,
@@ -2404,8 +2808,8 @@
         "enablePointerup": false,
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
-        "x": 1120,
-        "y": 280,
+        "x": 120,
+        "y": 440,
         "wires": [
             [
                 "77458c416232bac4",
@@ -2414,61 +2818,10 @@
         ]
     },
     {
-        "id": "7fe1a818d444c2d8",
-        "type": "ui-switch",
-        "z": "7eac0d34c6842661",
-        "name": "",
-        "label": "/camera/camera/color/image_raw",
-        "group": "8fa215b2d22c10a1",
-        "order": 5,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "decouple": false,
-        "topic": "payload",
-        "topicType": "msg",
-        "style": "",
-        "className": "",
-        "layout": "row-spread",
-        "clickableArea": "line",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "x": 240,
-        "y": 460,
-        "wires": [
-            [
-                "ad9940caeab1b430"
-            ]
-        ]
-    },
-    {
-        "id": "5df58008ea2c595e",
-        "type": "function",
-        "z": "7eac0d34c6842661",
-        "name": "function 3",
-        "func": "let topic = flow.get(\"topic\") || {};\n\ntopic[msg.topic] = msg.payload;\n\nflow.set(\"topic\", topic);\n\nreturn null;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 820,
-        "y": 500,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "09491869ce0a5c8d",
         "type": "exec",
         "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
         "command": "ros2 bag record ",
         "addpay": "args",
         "append": "",
@@ -2477,13 +2830,15 @@
         "winHide": false,
         "oldrc": false,
         "name": "record",
-        "x": 1490,
-        "y": 200,
+        "x": 490,
+        "y": 360,
         "wires": [
             [
                 "4a5f422bd8b69ccf"
             ],
-            [],
+            [
+                "4a5f422bd8b69ccf"
+            ],
             []
         ]
     },
@@ -2491,107 +2846,20 @@
         "id": "1db2200d08c777e6",
         "type": "function",
         "z": "7eac0d34c6842661",
-        "name": "function 4",
-        "func": "let topic = flow.get(\"topic\") || {};\nlet name = flow.get(\"name\") || \"\";\nlet args = \"\";\n\nfor (var prop in topic) {\n    if (topic[prop]){\n        args += prop + \" \";\n    }\n}\n\nif(name != \"\"){\n    args += \"-o bags/\" + name;\n    msg.args = args;\n}\n\nreturn msg;",
+        "g": "86aa23bf3b1e6449",
+        "name": "Set args",
+        "func": "let topics = flow.get(\"topics\") || [];\nlet name = flow.get(\"name\") || \"\";\nlet args = \"\";\n\n\ntopics.forEach(function(topic) {\n    if(topic.selected){\n        args += topic.topic + \" \";\n    }\n});\n\nif(name != \"\" || name != null){\n    args += \"-o bags/\" + name;\n    msg.args = args;\n}else{\n    return Error\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1320,
-        "y": 200,
+        "x": 320,
+        "y": 360,
         "wires": [
             [
                 "09491869ce0a5c8d"
-            ]
-        ]
-    },
-    {
-        "id": "8a6111a517facdb9",
-        "type": "ui-switch",
-        "z": "7eac0d34c6842661",
-        "name": "",
-        "label": "/camera/camera/depth/image_rect_raw",
-        "group": "8fa215b2d22c10a1",
-        "order": 6,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "decouple": false,
-        "topic": "payload",
-        "topicType": "msg",
-        "style": "",
-        "className": "",
-        "layout": "row-spread",
-        "clickableArea": "line",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "x": 260,
-        "y": 520,
-        "wires": [
-            [
-                "949a5eec2b5f35b5"
-            ]
-        ]
-    },
-    {
-        "id": "ad9940caeab1b430",
-        "type": "change",
-        "z": "7eac0d34c6842661",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "/camera/camera/color/image_raw",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 510,
-        "y": 460,
-        "wires": [
-            [
-                "5df58008ea2c595e"
-            ]
-        ]
-    },
-    {
-        "id": "949a5eec2b5f35b5",
-        "type": "change",
-        "z": "7eac0d34c6842661",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "/camera/camera/depth/image_rect_raw",
-                "tot": "str"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 510,
-        "y": 520,
-        "wires": [
-            [
-                "5df58008ea2c595e"
             ]
         ]
     },
@@ -2600,7 +2868,7 @@
         "type": "ui-text",
         "z": "7eac0d34c6842661",
         "group": "8fa215b2d22c10a1",
-        "order": 10,
+        "order": 8,
         "width": 0,
         "height": 0,
         "name": "",
@@ -2615,8 +2883,8 @@
         "className": "",
         "value": "args",
         "valueType": "msg",
-        "x": 630,
-        "y": 980,
+        "x": 1390,
+        "y": 220,
         "wires": []
     },
     {
@@ -2624,15 +2892,15 @@
         "type": "function",
         "z": "7eac0d34c6842661",
         "name": "function 6",
-        "func": "let topic = flow.get(\"topic\") || {};\nlet name = flow.get(\"name\") || \"\";\nlet args = \"\";\n\nfor (var prop in topic) {\n    if (topic[prop]) {\n        args += prop + \" \";\n    }\n}\n\nif (name != \"\") {\n    args += \"-o bags/\" + name;\n}\n\nmsg.args = args;\n\nreturn msg;",
+        "func": "let topics = flow.get(\"topics\") || [];\nlet name = flow.get(\"name\") || \"\";\nlet args = \"\";\n\n\ntopics.forEach(function(topic) {\n    if(topic.selected){\n        args += topic.topic + \" \";\n    }\n});\n\nif(name != \"\" || name != null){\n    args += \"-o bags/\" + name;\n    msg.args = args;\n}else{\n    return Error\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 480,
-        "y": 980,
+        "x": 1240,
+        "y": 220,
         "wires": [
             [
                 "cf098d80e782ab1b"
@@ -2670,8 +2938,8 @@
         "enablePointerup": false,
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
-        "x": 330,
-        "y": 980,
+        "x": 1090,
+        "y": 220,
         "wires": [
             [
                 "2c321cb0e079f320"
@@ -2682,10 +2950,11 @@
         "id": "b4bac91564af5c7f",
         "type": "ui-text-input",
         "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
         "group": "8fa215b2d22c10a1",
         "name": "",
         "label": "Name of ros bag",
-        "order": 4,
+        "order": 7,
         "width": 0,
         "height": 0,
         "topic": "topic",
@@ -2703,8 +2972,8 @@
         "icon": "",
         "iconPosition": "left",
         "iconInnerPosition": "inside",
-        "x": 180,
-        "y": 620,
+        "x": 900,
+        "y": 380,
         "wires": [
             [
                 "6c77795a704531a6"
@@ -2715,16 +2984,17 @@
         "id": "6c77795a704531a6",
         "type": "function",
         "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
         "name": "name bag",
-        "func": "let name = msg.payload;\n\nflow.set(\"name\", name);\n\nreturn null;",
+        "func": "let name = msg.payload\n\nif(name != null){\n    name = name.replaceAll(\" \", \"_\")\n    flow.set(\"name\", name);\n}\n\n\nreturn null;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 380,
-        "y": 620,
+        "x": 1100,
+        "y": 380,
         "wires": [
             []
         ]
@@ -2733,7 +3003,8 @@
         "id": "77458c416232bac4",
         "type": "function",
         "z": "7eac0d34c6842661",
-        "name": "function 7",
+        "g": "86aa23bf3b1e6449",
+        "name": "Send Kill process",
         "func": "msg.kill = \"\";\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -2741,8 +3012,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1320,
-        "y": 280,
+        "x": 350,
+        "y": 440,
         "wires": [
             [
                 "09491869ce0a5c8d"
@@ -2753,6 +3024,7 @@
         "id": "4a5f422bd8b69ccf",
         "type": "ui-notification",
         "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
         "ui": "0a82d6cde910b9ce",
         "position": "top right",
         "colorDefault": true,
@@ -2767,8 +3039,8 @@
         "raw": false,
         "className": "",
         "name": "",
-        "x": 1680,
-        "y": 180,
+        "x": 680,
+        "y": 360,
         "wires": [
             []
         ]
@@ -2777,13 +3049,13 @@
         "id": "e2af7c4b284ed16e",
         "type": "yaml",
         "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
         "property": "payload",
         "name": "",
-        "x": 2290,
-        "y": 440,
+        "x": 1050,
+        "y": 600,
         "wires": [
             [
-                "d3ea18fa6f17e54a",
                 "47f587318557bdf9"
             ]
         ]
@@ -2792,6 +3064,7 @@
         "id": "fc233579cf804a40",
         "type": "file in",
         "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
         "name": "",
         "filename": "path",
         "filenameType": "msg",
@@ -2800,8 +3073,8 @@
         "sendError": false,
         "encoding": "none",
         "allProps": false,
-        "x": 2140,
-        "y": 440,
+        "x": 900,
+        "y": 600,
         "wires": [
             [
                 "e2af7c4b284ed16e"
@@ -2812,6 +3085,7 @@
         "id": "dc0d48b2f00683af",
         "type": "exec",
         "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
         "command": "ls bags",
         "addpay": "",
         "append": "",
@@ -2820,13 +3094,13 @@
         "winHide": false,
         "oldrc": false,
         "name": "",
-        "x": 1320,
-        "y": 440,
+        "x": 320,
+        "y": 600,
         "wires": [
             [
                 "9e3011a5e9bb0cff",
                 "d389cfe6813fb929",
-                "c42c624909f04156"
+                "afc2bd05f2e8482c"
             ],
             [],
             []
@@ -2836,7 +3110,8 @@
         "id": "779fb24e15e1cf94",
         "type": "function",
         "z": "7eac0d34c6842661",
-        "name": "function 5",
+        "g": "86aa23bf3b1e6449",
+        "name": "set file directory",
         "func": "msg.path = \"bags/\" + msg.payload +\"/metadata.yaml\";\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -2844,8 +3119,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1980,
-        "y": 440,
+        "x": 720,
+        "y": 600,
         "wires": [
             [
                 "fc233579cf804a40"
@@ -2853,39 +3128,11 @@
         ]
     },
     {
-        "id": "e796245a752b45d6",
-        "type": "inject",
-        "z": "7eac0d34c6842661",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 1100,
-        "y": 440,
-        "wires": [
-            [
-                "dc0d48b2f00683af"
-            ]
-        ]
-    },
-    {
         "id": "9e3011a5e9bb0cff",
         "type": "function",
         "z": "7eac0d34c6842661",
-        "name": "function 8",
+        "g": "86aa23bf3b1e6449",
+        "name": "Bag selection",
         "func": "msg.ui_update = {};\n\nlet str = msg.payload;\nlet options = str.split('\\n');\noptions.pop();\n\nmsg.ui_update.options = []\noptions.forEach(function(element) {\n    msg.ui_update.options.push(\n        {\n            value: element\n        }\n    )\n});\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -2893,8 +3140,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1180,
-        "y": 820,
+        "x": 580,
+        "y": 540,
         "wires": [
             [
                 "b28498b9c68057ed"
@@ -2905,6 +3152,7 @@
         "id": "b28498b9c68057ed",
         "type": "ui-dropdown",
         "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
         "group": "5f6433eaaffe09b8",
         "name": "",
         "label": "Select Bag to playback",
@@ -2923,11 +3171,12 @@
         "className": "",
         "typeIsComboBox": true,
         "msgTrigger": "onChange",
-        "x": 1380,
-        "y": 820,
+        "x": 800,
+        "y": 540,
         "wires": [
             [
-                "4380c87ec9a75d8c"
+                "ec278fe61b7f2736",
+                "ea38035bc9213be6"
             ]
         ]
     },
@@ -2935,6 +3184,7 @@
         "id": "0894658fb8624d8e",
         "type": "ui-table",
         "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
         "group": "819c0672e591b0ca",
         "name": "",
         "label": "",
@@ -2952,290 +3202,21 @@
         "mobileBreakpointType": "defaults",
         "action": "append",
         "className": "",
-        "x": 2650,
-        "y": 520,
+        "x": 1430,
+        "y": 680,
         "wires": [
             []
         ]
-    },
-    {
-        "id": "d3ea18fa6f17e54a",
-        "type": "debug",
-        "z": "7eac0d34c6842661",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2480,
-        "y": 340,
-        "wires": []
     },
     {
         "id": "afc2bd05f2e8482c",
         "type": "ui-button",
         "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
         "group": "819c0672e591b0ca",
         "name": "",
         "label": "clear",
         "order": 2,
-        "width": 0,
-        "height": 0,
-        "emulateClick": false,
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "iconPosition": "left",
-        "payload": "[]",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "buttonColor": "",
-        "textColor": "",
-        "iconColor": "",
-        "enableClick": true,
-        "enablePointerdown": false,
-        "pointerdownPayload": "",
-        "pointerdownPayloadType": "str",
-        "enablePointerup": false,
-        "pointerupPayload": "",
-        "pointerupPayloadType": "str",
-        "x": 1610,
-        "y": 660,
-        "wires": [
-            [
-                "c42c624909f04156"
-            ]
-        ]
-    },
-    {
-        "id": "d389cfe6813fb929",
-        "type": "split",
-        "z": "7eac0d34c6842661",
-        "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": true,
-        "addname": "",
-        "property": "payload",
-        "x": 1740,
-        "y": 280,
-        "wires": [
-            [
-                "779fb24e15e1cf94"
-            ]
-        ]
-    },
-    {
-        "id": "47f587318557bdf9",
-        "type": "function",
-        "z": "7eac0d34c6842661",
-        "name": "function 9",
-        "func": "const info = msg.payload.rosbag2_bagfile_information;\n\nmsg.payload = [{\n    name: info.relative_file_paths[0].replace(\".mcap\", \"\"),\n    duration: (info.duration.nanoseconds / 1e9).toFixed(2) + \" s\",\n    messages: info.message_count,\n    topics: info.topics_with_message_count.length,\n    storage: info.storage_identifier,\n    distro: info.ros_distro\n}];\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2440,
-        "y": 500,
-        "wires": [
-            [
-                "0894658fb8624d8e",
-                "32b1fb3fd5d45385"
-            ]
-        ]
-    },
-    {
-        "id": "32b1fb3fd5d45385",
-        "type": "debug",
-        "z": "7eac0d34c6842661",
-        "name": "debug 2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2670,
-        "y": 420,
-        "wires": []
-    },
-    {
-        "id": "c42c624909f04156",
-        "type": "function",
-        "z": "7eac0d34c6842661",
-        "name": "function 10",
-        "func": "msg.payload = [];\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1890,
-        "y": 600,
-        "wires": [
-            [
-                "0894658fb8624d8e"
-            ]
-        ]
-    },
-    {
-        "id": "35724e8a79eb4580",
-        "type": "ui-button",
-        "z": "7eac0d34c6842661",
-        "group": "819c0672e591b0ca",
-        "name": "",
-        "label": "populate",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "emulateClick": false,
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "iconPosition": "left",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "buttonColor": "",
-        "textColor": "",
-        "iconColor": "",
-        "enableClick": true,
-        "enablePointerdown": false,
-        "pointerdownPayload": "",
-        "pointerdownPayloadType": "str",
-        "enablePointerup": false,
-        "pointerupPayload": "",
-        "pointerupPayloadType": "str",
-        "x": 1120,
-        "y": 520,
-        "wires": [
-            [
-                "dc0d48b2f00683af"
-            ]
-        ]
-    },
-    {
-        "id": "8e65fa084b0fff2a",
-        "type": "delay",
-        "z": "7eac0d34c6842661",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "50",
-        "timeoutUnits": "milliseconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 1230,
-        "y": 360,
-        "wires": [
-            [
-                "dc0d48b2f00683af"
-            ]
-        ]
-    },
-    {
-        "id": "4380c87ec9a75d8c",
-        "type": "exec",
-        "z": "7eac0d34c6842661",
-        "command": "ls bags",
-        "addpay": "",
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "winHide": false,
-        "oldrc": false,
-        "name": "",
-        "x": 1640,
-        "y": 820,
-        "wires": [
-            [],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "4d8a2e2e37a13832",
-        "type": "ui-table",
-        "z": "7eac0d34c6842661",
-        "group": "8fa215b2d22c10a1",
-        "name": "",
-        "label": "Topics",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "maxrows": 0,
-        "passthru": false,
-        "autocols": true,
-        "showSearch": true,
-        "deselect": true,
-        "selectionType": "checkbox",
-        "columns": [
-            {
-                "title": "",
-                "key": "name",
-                "keyType": "key",
-                "type": "text",
-                "width": "",
-                "align": "start"
-            },
-            {
-                "title": "",
-                "key": "type",
-                "keyType": "key",
-                "type": "text",
-                "width": "",
-                "align": "start"
-            },
-            {
-                "title": "Select",
-                "key": "isSelected",
-                "keyType": "key",
-                "type": "button",
-                "width": "",
-                "align": "start"
-            }
-        ],
-        "mobileBreakpoint": "sm",
-        "mobileBreakpointType": "defaults",
-        "action": "append",
-        "className": "",
-        "x": 810,
-        "y": 300,
-        "wires": [
-            [
-                "b76e0a6199ea5893"
-            ]
-        ]
-    },
-    {
-        "id": "a1723a3f219aec55",
-        "type": "ui-button",
-        "z": "7eac0d34c6842661",
-        "group": "8fa215b2d22c10a1",
-        "name": "",
-        "label": "clear",
-        "order": 1,
         "width": 0,
         "height": 0,
         "emulateClick": true,
@@ -3259,10 +3240,207 @@
         "enablePointerup": false,
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
-        "x": 510,
-        "y": 320,
+        "x": 550,
+        "y": 680,
         "wires": [
             [
+                "0894658fb8624d8e"
+            ]
+        ]
+    },
+    {
+        "id": "d389cfe6813fb929",
+        "type": "split",
+        "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": true,
+        "addname": "",
+        "property": "payload",
+        "x": 550,
+        "y": 600,
+        "wires": [
+            [
+                "779fb24e15e1cf94"
+            ]
+        ]
+    },
+    {
+        "id": "47f587318557bdf9",
+        "type": "function",
+        "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
+        "name": "refactor bags infos",
+        "func": "const info = msg.payload.rosbag2_bagfile_information;\n\nmsg.payload = [{\n    name: info.relative_file_paths[0].replace(\"_0.mcap\", \"\"),\n    duration: (info.duration.nanoseconds / 1e9).toFixed(2) + \" s\",\n    messages: info.message_count,\n    topics: info.topics_with_message_count.length,\n    storage: info.storage_identifier,\n    distro: info.ros_distro\n}];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1250,
+        "y": 600,
+        "wires": [
+            [
+                "0894658fb8624d8e"
+            ]
+        ]
+    },
+    {
+        "id": "35724e8a79eb4580",
+        "type": "ui-button",
+        "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
+        "group": "819c0672e591b0ca",
+        "name": "",
+        "label": "populate",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 140,
+        "y": 600,
+        "wires": [
+            [
+                "dc0d48b2f00683af"
+            ]
+        ]
+    },
+    {
+        "id": "8e65fa084b0fff2a",
+        "type": "delay",
+        "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 220,
+        "y": 520,
+        "wires": [
+            [
+                "dc0d48b2f00683af"
+            ]
+        ]
+    },
+    {
+        "id": "4d8a2e2e37a13832",
+        "type": "ui-table",
+        "z": "7eac0d34c6842661",
+        "g": "db6e9ffd1ee575de",
+        "group": "8fa215b2d22c10a1",
+        "name": "",
+        "label": "Topics",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "maxrows": 0,
+        "passthru": false,
+        "autocols": false,
+        "showSearch": true,
+        "deselect": true,
+        "selectionType": "checkbox",
+        "columns": [
+            {
+                "title": "",
+                "key": "topic",
+                "keyType": "key",
+                "type": "text",
+                "width": "",
+                "align": "start"
+            },
+            {
+                "title": "",
+                "key": "type",
+                "keyType": "key",
+                "type": "text",
+                "width": "",
+                "align": "start"
+            }
+        ],
+        "mobileBreakpoint": "sm",
+        "mobileBreakpointType": "defaults",
+        "action": "replace",
+        "className": "",
+        "x": 670,
+        "y": 180,
+        "wires": [
+            [
+                "68b1bfde2bfbaa49",
+                "9e0d58542b489367"
+            ]
+        ]
+    },
+    {
+        "id": "a1723a3f219aec55",
+        "type": "ui-button",
+        "z": "7eac0d34c6842661",
+        "g": "db6e9ffd1ee575de",
+        "group": "8fa215b2d22c10a1",
+        "name": "",
+        "label": "clear",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "emulateClick": true,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "[]",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 310,
+        "y": 180,
+        "wires": [
+            [
+                "36a3fe263df9fbab",
                 "4d8a2e2e37a13832"
             ]
         ]
@@ -3271,10 +3449,11 @@
         "id": "46214fd49d9e1022",
         "type": "ui-button",
         "z": "7eac0d34c6842661",
+        "g": "db6e9ffd1ee575de",
         "group": "8fa215b2d22c10a1",
         "name": "",
         "label": "populate",
-        "order": 2,
+        "order": 4,
         "width": 0,
         "height": 0,
         "emulateClick": true,
@@ -3299,27 +3478,29 @@
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
         "x": 120,
-        "y": 240,
+        "y": 180,
         "wires": [
             [
-                "2e73d3539b370f2e"
+                "2e73d3539b370f2e",
+                "a1723a3f219aec55"
             ]
         ]
     },
     {
-        "id": "65046d2db7f2b2b2",
+        "id": "a024c7f35c51da3c",
         "type": "function",
         "z": "7eac0d34c6842661",
-        "name": "function 11",
-        "func": "let split = msg.payload.split(\" \")\n\nmsg.payload = [{\n    name: split[0],\n    type: split[1]\n}];\n\nreturn msg;",
+        "g": "db6e9ffd1ee575de",
+        "name": "set topics",
+        "func": "let topics = flow.get(\"topics\") || []\nlet split = msg.payload.split(\" \")\n\nlet topic = split[0];\nlet type = split[1];\nlet selected = false;\n\ntopics.push(\n{\n    topic: topic,\n    type: type,\n    selected: selected\n}\n)\n\nflow.set(\"topics\", topics);\nmsg.payload = topics;\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 670,
-        "y": 240,
+        "x": 660,
+        "y": 100,
         "wires": [
             [
                 "4d8a2e2e37a13832"
@@ -3327,43 +3508,112 @@
         ]
     },
     {
-        "id": "b76e0a6199ea5893",
-        "type": "ui-notification",
-        "z": "7eac0d34c6842661",
-        "ui": "0a82d6cde910b9ce",
-        "position": "top right",
-        "colorDefault": true,
-        "color": "#000000",
-        "displayTime": "3",
-        "showCountdown": true,
-        "outputs": 1,
-        "allowDismiss": true,
-        "dismissText": "Close",
-        "allowConfirm": false,
-        "confirmText": "Confirm",
-        "raw": false,
-        "className": "",
-        "name": "",
-        "x": 870,
-        "y": 420,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "a024c7f35c51da3c",
+        "id": "36a3fe263df9fbab",
         "type": "function",
         "z": "7eac0d34c6842661",
-        "name": "function 12",
-        "func": "let topic = flow.get(\"topic\") || {};\n\ntopic[msg.topic] = msg.payload;\n\nflow.set(\"topic\", topic);\n\nreturn null;",
+        "g": "db6e9ffd1ee575de",
+        "name": "reset topics",
+        "func": "let topics = []\n\nflow.set(\"topics\", topics);\n\nreturn null;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 730,
-        "y": 100,
+        "x": 490,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9e0d58542b489367",
+        "type": "function",
+        "z": "7eac0d34c6842661",
+        "g": "db6e9ffd1ee575de",
+        "name": "set topics",
+        "func": "let topics = flow.get(\"topics\") || [];\n\nlet selecteds = msg.payload;\n\ntopics.forEach(function(element) {\n    element.selected = false;\n});\n\nselecteds.forEach(function(select) {\n    let i = topics.findIndex(t => t.topic === select.topic);\n    if (i !== -1) {\n        topics[i].selected = true;\n    }else{\n        topics[i].selected = false;\n    }\n});\n\nflow.set(\"topics\", topics);\nmsg.payload = topics\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ec278fe61b7f2736",
+        "type": "debug",
+        "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1240,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "ea38035bc9213be6",
+        "type": "function",
+        "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
+        "name": "function 3",
+        "func": "let sel_bag = msg.payload\n\nif(sel_bag != null){\n    flow.set(\"sel_bag\", sel_bag);\n}\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4c44e11219576f1c",
+        "type": "ui-button",
+        "z": "7eac0d34c6842661",
+        "group": "8fa215b2d22c10a1",
+        "name": "",
+        "label": "Playback",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 120,
+        "y": 820,
         "wires": [
             []
         ]

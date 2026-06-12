@@ -55,7 +55,7 @@ ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur3e robot_ip:=0.0.0.0
 Pour faire tourner l'inverse kinematic
 `ros2 run pose_to_moveit pose_to_moveit_node`
 
-# Pour la camera
+# Pour la camera Realsense
 ```zsh
 sudo apt install ros-jazzy-librealsense2
 sudo apt install ros-jazzy-realsense2-camera
@@ -75,3 +75,6 @@ ros2 launch realsense2_camera rs_launch.py \
     enable_depth:=false \
     rgb_camera.profile:=240x240x2
 ```
+
+# Pour la camera Astra 2
+https://github.com/orbbec/OrbbecSDK_ROS2
