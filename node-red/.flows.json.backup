@@ -145,13 +145,20 @@
             "8e65fa084b0fff2a",
             "6c77795a704531a6",
             "b4bac91564af5c7f",
-            "ec278fe61b7f2736",
-            "ea38035bc9213be6"
+            "ea38035bc9213be6",
+            "5e8ac04410154c1e",
+            "2c05d32ee6a731c3",
+            "e13d89b487f858b1",
+            "1511f9f176672c80",
+            "4c819166c60bd661",
+            "8448e39745e6df35",
+            "39f34250dc4c9956",
+            "cfb03af384e033ff"
         ],
         "x": 14,
         "y": 311.5,
-        "w": 1492,
-        "h": 409.5
+        "w": 2052,
+        "h": 469.5
     },
     {
         "id": "4c874896217ac7b4",
@@ -217,12 +224,12 @@
             "42145458cfe2a7f2",
             "1fba95fd6322f2c6",
             "df23868f08518eac",
-            "861ee3faf20193d5"
+            "6e6769ac9989356a"
         ],
         "x": 994,
         "y": 71.5,
         "w": 1292,
-        "h": 289.5
+        "h": 309.5
     },
     {
         "id": "0a82d6cde910b9ce",
@@ -2549,7 +2556,7 @@
         "page": "",
         "ui": "",
         "name": "Affichage Caméra",
-        "order": 2,
+        "order": 3,
         "width": 0,
         "height": 0,
         "head": "",
@@ -2592,8 +2599,7 @@
         "y": 260,
         "wires": [
             [
-                "42145458cfe2a7f2",
-                "861ee3faf20193d5"
+                "42145458cfe2a7f2"
             ]
         ]
     },
@@ -2628,21 +2634,45 @@
         ]
     },
     {
-        "id": "861ee3faf20193d5",
-        "type": "debug",
+        "id": "6e6769ac9989356a",
+        "type": "ui-button",
         "z": "37999168f7331a03",
         "g": "80473e158615c07b",
-        "name": "debug 3",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2070,
-        "y": 200,
-        "wires": []
+        "group": "28ca805dbd7d934e",
+        "name": "",
+        "label": "Find image topics",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 1130,
+        "y": 340,
+        "wires": [
+            [
+                "5f2a5969dbf68176",
+                "42145458cfe2a7f2"
+            ]
+        ]
     },
     {
         "id": "2e73d3539b370f2e",
@@ -2744,7 +2774,7 @@
         "group": "8fa215b2d22c10a1",
         "name": "",
         "label": "Start Recording",
-        "order": 1,
+        "order": 2,
         "width": 0,
         "height": 0,
         "emulateClick": false,
@@ -2784,7 +2814,7 @@
         "group": "8fa215b2d22c10a1",
         "name": "",
         "label": "Stop Recording",
-        "order": 2,
+        "order": 3,
         "width": 0,
         "height": 0,
         "emulateClick": false,
@@ -2848,7 +2878,7 @@
         "z": "7eac0d34c6842661",
         "g": "86aa23bf3b1e6449",
         "name": "Set args",
-        "func": "let topics = flow.get(\"topics\") || [];\nlet name = flow.get(\"name\") || \"\";\nlet args = \"\";\n\n\ntopics.forEach(function(topic) {\n    if(topic.selected){\n        args += topic.topic + \" \";\n    }\n});\n\nif(name != \"\" || name != null){\n    args += \"-o bags/\" + name;\n    msg.args = args;\n}else{\n    return Error\n}\n\nreturn msg;",
+        "func": "let topics = flow.get(\"topics\") || [];\nlet name = flow.get(\"name\") || \"\";\nlet args = \"\";\n\n\ntopics.forEach(function(topic) {\n    if(topic.selected){\n        args += topic.topic + \" \";\n    }\n});\n\nif(name != \"\" && name != null){\n    args += \"-o bags/\" + name;\n    msg.args = args;\n}else{\n    return Error\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -2868,7 +2898,7 @@
         "type": "ui-text",
         "z": "7eac0d34c6842661",
         "group": "8fa215b2d22c10a1",
-        "order": 7,
+        "order": 8,
         "width": 0,
         "height": 0,
         "name": "",
@@ -2914,7 +2944,7 @@
         "group": "8fa215b2d22c10a1",
         "name": "",
         "label": "button",
-        "order": 8,
+        "order": 7,
         "width": 0,
         "height": 0,
         "emulateClick": false,
@@ -2954,7 +2984,7 @@
         "group": "8fa215b2d22c10a1",
         "name": "",
         "label": "Name of ros bag",
-        "order": 6,
+        "order": 1,
         "width": 0,
         "height": 0,
         "topic": "topic",
@@ -3157,7 +3187,7 @@
         "name": "",
         "label": "Select Bag to playback",
         "tooltip": "",
-        "order": 1,
+        "order": 2,
         "width": 0,
         "height": 0,
         "passthru": false,
@@ -3175,7 +3205,6 @@
         "y": 540,
         "wires": [
             [
-                "ec278fe61b7f2736",
                 "ea38035bc9213be6"
             ]
         ]
@@ -3193,11 +3222,68 @@
         "height": 0,
         "maxrows": 0,
         "passthru": false,
-        "autocols": true,
+        "autocols": false,
         "showSearch": true,
         "deselect": true,
         "selectionType": "none",
-        "columns": [],
+        "columns": [
+            {
+                "title": "Name",
+                "key": "name",
+                "keyType": "key",
+                "type": "text",
+                "width": "",
+                "align": "start"
+            },
+            {
+                "title": "Duration",
+                "key": "duration",
+                "keyType": "key",
+                "type": "text",
+                "width": "",
+                "align": "start"
+            },
+            {
+                "title": "Nb mess",
+                "key": "messages",
+                "keyType": "key",
+                "type": "text",
+                "width": "",
+                "align": "start"
+            },
+            {
+                "title": "Nb topics",
+                "key": "topics",
+                "keyType": "key",
+                "type": "text",
+                "width": "",
+                "align": "start"
+            },
+            {
+                "title": "Storage type",
+                "key": "storage",
+                "keyType": "key",
+                "type": "text",
+                "width": "",
+                "align": "start"
+            },
+            {
+                "title": "Distro",
+                "key": "distro",
+                "keyType": "key",
+                "type": "text",
+                "width": "",
+                "align": "start"
+            },
+            {
+                "title": "",
+                "key": "remove",
+                "keyType": "key",
+                "type": "button",
+                "width": "",
+                "align": "start"
+            }
+        ],
         "mobileBreakpoint": "sm",
         "mobileBreakpointType": "defaults",
         "action": "append",
@@ -3205,7 +3291,10 @@
         "x": 1430,
         "y": 680,
         "wires": [
-            []
+            [
+                "e13d89b487f858b1",
+                "5e8ac04410154c1e"
+            ]
         ]
     },
     {
@@ -3275,7 +3364,7 @@
         "z": "7eac0d34c6842661",
         "g": "86aa23bf3b1e6449",
         "name": "refactor bags infos",
-        "func": "const info = msg.payload.rosbag2_bagfile_information;\n\nmsg.payload = [{\n    name: info.relative_file_paths[0].replace(\"_0.mcap\", \"\"),\n    duration: (info.duration.nanoseconds / 1e9).toFixed(2) + \" s\",\n    messages: info.message_count,\n    topics: info.topics_with_message_count.length,\n    storage: info.storage_identifier,\n    distro: info.ros_distro\n}];\n\nreturn msg;",
+        "func": "const info = msg.payload.rosbag2_bagfile_information;\n\nmsg.payload = [{\n    name: info.relative_file_paths[0].replace(\"_0.mcap\", \"\"),\n    duration: (info.duration.nanoseconds / 1e9).toFixed(2) + \" s\",\n    messages: info.message_count,\n    topics: info.topics_with_message_count.length,\n    storage: info.storage_identifier,\n    distro: info.ros_distro,\n    remove: \"delete\",\n}];\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -3301,7 +3390,7 @@
         "order": 3,
         "width": 0,
         "height": 0,
-        "emulateClick": false,
+        "emulateClick": true,
         "tooltip": "",
         "color": "",
         "bgcolor": "",
@@ -3364,7 +3453,7 @@
         "group": "8fa215b2d22c10a1",
         "name": "",
         "label": "Topics",
-        "order": 5,
+        "order": 4,
         "width": 0,
         "height": 0,
         "maxrows": 0,
@@ -3375,7 +3464,7 @@
         "selectionType": "checkbox",
         "columns": [
             {
-                "title": "",
+                "title": "Topics",
                 "key": "topic",
                 "keyType": "key",
                 "type": "text",
@@ -3383,7 +3472,7 @@
                 "align": "start"
             },
             {
-                "title": "",
+                "title": "Type",
                 "key": "type",
                 "keyType": "key",
                 "type": "text",
@@ -3412,7 +3501,7 @@
         "group": "8fa215b2d22c10a1",
         "name": "",
         "label": "clear",
-        "order": 4,
+        "order": 6,
         "width": 0,
         "height": 0,
         "emulateClick": true,
@@ -3453,7 +3542,7 @@
         "group": "8fa215b2d22c10a1",
         "name": "",
         "label": "populate",
-        "order": 3,
+        "order": 5,
         "width": 0,
         "height": 0,
         "emulateClick": true,
@@ -3546,23 +3635,6 @@
         ]
     },
     {
-        "id": "ec278fe61b7f2736",
-        "type": "debug",
-        "z": "7eac0d34c6842661",
-        "g": "86aa23bf3b1e6449",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1240,
-        "y": 500,
-        "wires": []
-    },
-    {
         "id": "ea38035bc9213be6",
         "type": "function",
         "z": "7eac0d34c6842661",
@@ -3580,5 +3652,711 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "4c44e11219576f1c",
+        "type": "ui-button",
+        "z": "7eac0d34c6842661",
+        "group": "5f6433eaaffe09b8",
+        "name": "",
+        "label": "Playback",
+        "order": 3,
+        "width": "3",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 280,
+        "y": 840,
+        "wires": [
+            [
+                "1097796183793471"
+            ]
+        ]
+    },
+    {
+        "id": "8040659164137357",
+        "type": "exec",
+        "z": "7eac0d34c6842661",
+        "command": "ros2 bag play",
+        "addpay": "args",
+        "append": "",
+        "useSpawn": "true",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 700,
+        "y": 840,
+        "wires": [
+            [
+                "e0403ee59196b159"
+            ],
+            [
+                "54f754af35952bed"
+            ],
+            [
+                "9f31d4700c4da20e"
+            ]
+        ]
+    },
+    {
+        "id": "24a0795041862183",
+        "type": "exec",
+        "z": "7eac0d34c6842661",
+        "command": "pkill -2 -f \"ros2 bag play\"",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "true",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 670,
+        "y": 920,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "22ef2eb15d08bcfb",
+        "type": "inject",
+        "z": "7eac0d34c6842661",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 390,
+        "y": 980,
+        "wires": [
+            [
+                "24a0795041862183"
+            ]
+        ]
+    },
+    {
+        "id": "1097796183793471",
+        "type": "function",
+        "z": "7eac0d34c6842661",
+        "name": "function 5",
+        "func": "let play = flow.get(\"play\") || \"stop\";\nlet sel_bag = flow.get(\"sel_bag\") || null;\n\nif(sel_bag != null){\n    play = \"play\";\n    msg.args = \"bags/\" + sel_bag + \" --loop\";\n}\n\nflow.set(\"play\", play);\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 840,
+        "wires": [
+            [
+                "8040659164137357"
+            ]
+        ]
+    },
+    {
+        "id": "2c05d32ee6a731c3",
+        "type": "exec",
+        "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
+        "command": "rm -r ",
+        "addpay": "arg",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 1770,
+        "y": 680,
+        "wires": [
+            [
+                "39f34250dc4c9956",
+                "35724e8a79eb4580"
+            ],
+            [
+                "1511f9f176672c80"
+            ],
+            [
+                "4c819166c60bd661",
+                "8448e39745e6df35"
+            ]
+        ]
+    },
+    {
+        "id": "e13d89b487f858b1",
+        "type": "function",
+        "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
+        "name": "function 7",
+        "func": "if(msg.payload.name){\n    msg.arg = \"bags/\" + msg.payload.name;\n    return msg;\n}\n\nreturn null;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1600,
+        "y": 680,
+        "wires": [
+            [
+                "2c05d32ee6a731c3"
+            ]
+        ]
+    },
+    {
+        "id": "5e8ac04410154c1e",
+        "type": "debug",
+        "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1600,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "1511f9f176672c80",
+        "type": "debug",
+        "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1960,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "4c819166c60bd661",
+        "type": "debug",
+        "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1960,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "8448e39745e6df35",
+        "type": "exec",
+        "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
+        "command": "mkdir bags",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 1950,
+        "y": 540,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "39f34250dc4c9956",
+        "type": "debug",
+        "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1950,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "cfb03af384e033ff",
+        "type": "inject",
+        "z": "7eac0d34c6842661",
+        "g": "86aa23bf3b1e6449",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1680,
+        "y": 480,
+        "wires": [
+            [
+                "8448e39745e6df35"
+            ]
+        ]
+    },
+    {
+        "id": "e0403ee59196b159",
+        "type": "debug",
+        "z": "7eac0d34c6842661",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 950,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "54f754af35952bed",
+        "type": "debug",
+        "z": "7eac0d34c6842661",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "9f31d4700c4da20e",
+        "type": "debug",
+        "z": "7eac0d34c6842661",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "3774e2fa31aaa80e",
+        "type": "inject",
+        "z": "7eac0d34c6842661",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 880,
+        "wires": [
+            [
+                "1097796183793471"
+            ]
+        ]
+    },
+    {
+        "id": "c2139e807c0d67fc",
+        "type": "ui-button",
+        "z": "7eac0d34c6842661",
+        "group": "5f6433eaaffe09b8",
+        "name": "",
+        "label": "Stop",
+        "order": 4,
+        "width": "1",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 290,
+        "y": 920,
+        "wires": [
+            [
+                "c17f39b42219acde"
+            ]
+        ]
+    },
+    {
+        "id": "4fdc2050de20aaf5",
+        "type": "ui-button",
+        "z": "7eac0d34c6842661",
+        "group": "5f6433eaaffe09b8",
+        "name": "",
+        "label": "Pause",
+        "order": 6,
+        "width": "1",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 210,
+        "y": 1140,
+        "wires": [
+            [
+                "99af47fbf8dfd2fd"
+            ]
+        ]
+    },
+    {
+        "id": "dbba7d6897c7cc81",
+        "type": "ui-button",
+        "z": "7eac0d34c6842661",
+        "group": "5f6433eaaffe09b8",
+        "name": "",
+        "label": "Resume",
+        "order": 5,
+        "width": "1",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 200,
+        "y": 1060,
+        "wires": [
+            [
+                "ce5ee8833284c253"
+            ]
+        ]
+    },
+    {
+        "id": "bd08beba06b11c6a",
+        "type": "exec",
+        "z": "7eac0d34c6842661",
+        "command": "ros2 service call /rosbag2_player/resume rosbag2_interfaces/srv/Resume",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "true",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 740,
+        "y": 1060,
+        "wires": [
+            [
+                "a7a7e667dd0a80b5"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "f0d42c8214914908",
+        "type": "exec",
+        "z": "7eac0d34c6842661",
+        "command": "ros2 service call /rosbag2_player/pause rosbag2_interfaces/srv/Pause",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "true",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 730,
+        "y": 1140,
+        "wires": [
+            [
+                "df7c8c25edbdfe55"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "047ae153c01b1e9e",
+        "type": "ui-text",
+        "z": "7eac0d34c6842661",
+        "group": "5f6433eaaffe09b8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 1390,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "605439cf184fc9d1",
+        "type": "function",
+        "z": "7eac0d34c6842661",
+        "name": "function 8",
+        "func": "let play = flow.get(\"play\") || \"stop\";\nlet sel_bag = flow.get(\"sel_bag\") || null;\n\nlet anim = flow.get(\"anim\") || \"\";\nanim += \".\";\n\n\n\n\nif(play == \"play\"){\n    msg.payload = \"Playing \" + sel_bag + \" on loop\" + anim;\n} else if (play == \"stop\"){\n    msg.payload = \"No bag is being played.\"\n} else if (play == \"pause\") {\n    msg.payload = \"Bag \" + sel_bag + \" is paused.\"\n}\n\n\nif(anim == \"...\"){\n    anim = \"\";\n}\n\nflow.set(\"anim\", anim)\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1240,
+        "y": 980,
+        "wires": [
+            [
+                "047ae153c01b1e9e"
+            ]
+        ]
+    },
+    {
+        "id": "21e75c18df32fe69",
+        "type": "inject",
+        "z": "7eac0d34c6842661",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "0.5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1070,
+        "y": 980,
+        "wires": [
+            [
+                "605439cf184fc9d1"
+            ]
+        ]
+    },
+    {
+        "id": "c17f39b42219acde",
+        "type": "function",
+        "z": "7eac0d34c6842661",
+        "name": "function 9",
+        "func": "let play = \"stop\";\nflow.set(\"play\", play)\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 920,
+        "wires": [
+            [
+                "24a0795041862183"
+            ]
+        ]
+    },
+    {
+        "id": "99af47fbf8dfd2fd",
+        "type": "function",
+        "z": "7eac0d34c6842661",
+        "name": "function 10",
+        "func": "let play = \"pause\";\nflow.set(\"play\", play)\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 1140,
+        "wires": [
+            [
+                "f0d42c8214914908"
+            ]
+        ]
+    },
+    {
+        "id": "ce5ee8833284c253",
+        "type": "function",
+        "z": "7eac0d34c6842661",
+        "name": "function 11",
+        "func": "let play = \"play\";\nflow.set(\"play\", play)\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 1060,
+        "wires": [
+            [
+                "bd08beba06b11c6a"
+            ]
+        ]
+    },
+    {
+        "id": "a7a7e667dd0a80b5",
+        "type": "debug",
+        "z": "7eac0d34c6842661",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1130,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "df7c8c25edbdfe55",
+        "type": "debug",
+        "z": "7eac0d34c6842661",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 1140,
+        "wires": []
     }
 ]

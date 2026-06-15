@@ -78,3 +78,9 @@ ros2 launch realsense2_camera rs_launch.py \
 
 # Pour la camera Astra 2
 https://github.com/orbbec/OrbbecSDK_ROS2
+
+```
+ros2 launch orbbec_camera astra2.launch.py \
+    color_width:=800 color_height:=600 \
+    depth_width:=800 depth_height:=600
+```
