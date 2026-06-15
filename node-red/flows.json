@@ -200,7 +200,7 @@
             "a2246a073cbad85d"
         ],
         "x": 14,
-        "y": 599,
+        "y": 579,
         "w": 1212,
         "h": 562
     },
@@ -1620,7 +1620,7 @@
         "finalize": "",
         "libs": [],
         "x": 320,
-        "y": 1000,
+        "y": 980,
         "wires": [
             [
                 "8f4ff7d9fc1da06e"
@@ -1645,7 +1645,7 @@
         "step": "1",
         "tooltip": "",
         "delay": 300,
-        "passthru": true,
+        "passthru": false,
         "sendOnDelay": true,
         "sendOnBlur": true,
         "sendOnEnter": true,
@@ -1656,7 +1656,7 @@
         "iconInnerPosition": "inside",
         "spinner": "stacked",
         "x": 90,
-        "y": 640,
+        "y": 620,
         "wires": [
             [
                 "827521128ba2a3b5"
@@ -1692,7 +1692,7 @@
         "iconInnerPosition": "inside",
         "spinner": "stacked",
         "x": 90,
-        "y": 680,
+        "y": 660,
         "wires": [
             [
                 "003e159c343fc4ce"
@@ -1728,7 +1728,7 @@
         "iconInnerPosition": "inside",
         "spinner": "stacked",
         "x": 90,
-        "y": 720,
+        "y": 700,
         "wires": [
             [
                 "3af1b62d749f811d"
@@ -1756,7 +1756,7 @@
         "to": "",
         "reg": false,
         "x": 250,
-        "y": 640,
+        "y": 620,
         "wires": [
             [
                 "a43072f68d7879d0"
@@ -1784,7 +1784,7 @@
         "to": "",
         "reg": false,
         "x": 250,
-        "y": 680,
+        "y": 660,
         "wires": [
             [
                 "a43072f68d7879d0"
@@ -1812,7 +1812,7 @@
         "to": "",
         "reg": false,
         "x": 250,
-        "y": 720,
+        "y": 700,
         "wires": [
             [
                 "a43072f68d7879d0"
@@ -1840,7 +1840,7 @@
         "to": "",
         "reg": false,
         "x": 250,
-        "y": 800,
+        "y": 780,
         "wires": [
             [
                 "ad5d98db099f9bd8"
@@ -1868,7 +1868,7 @@
         "to": "",
         "reg": false,
         "x": 250,
-        "y": 840,
+        "y": 820,
         "wires": [
             [
                 "ad5d98db099f9bd8"
@@ -1896,7 +1896,7 @@
         "to": "",
         "reg": false,
         "x": 250,
-        "y": 880,
+        "y": 860,
         "wires": [
             [
                 "ad5d98db099f9bd8"
@@ -1917,7 +1917,7 @@
         "finalize": "",
         "libs": [],
         "x": 440,
-        "y": 680,
+        "y": 660,
         "wires": [
             []
         ]
@@ -1955,7 +1955,7 @@
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
         "x": 130,
-        "y": 1000,
+        "y": 980,
         "wires": [
             [
                 "d77407cef4a106c5"
@@ -1976,7 +1976,7 @@
         "finalize": "",
         "libs": [],
         "x": 430,
-        "y": 860,
+        "y": 840,
         "wires": [
             []
         ]
@@ -2002,7 +2002,7 @@
         "to": "",
         "reg": false,
         "x": 250,
-        "y": 920,
+        "y": 900,
         "wires": [
             [
                 "ad5d98db099f9bd8"
@@ -2038,7 +2038,7 @@
         "colorThumb": "",
         "showTextField": false,
         "x": 90,
-        "y": 800,
+        "y": 780,
         "wires": [
             [
                 "dddd74cf2d2572b7"
@@ -2074,7 +2074,7 @@
         "colorThumb": "",
         "showTextField": false,
         "x": 90,
-        "y": 840,
+        "y": 820,
         "wires": [
             [
                 "bd4f6896a346efbf"
@@ -2110,7 +2110,7 @@
         "colorThumb": "",
         "showTextField": false,
         "x": 90,
-        "y": 880,
+        "y": 860,
         "wires": [
             [
                 "74e42fc3b107c7df"
@@ -2146,7 +2146,7 @@
         "colorThumb": "",
         "showTextField": false,
         "x": 90,
-        "y": 920,
+        "y": 900,
         "wires": [
             [
                 "a29c9b80fdf3fb62"
@@ -2175,7 +2175,7 @@
         "repair": false,
         "outputs": 2,
         "x": 730,
-        "y": 1100,
+        "y": 1080,
         "wires": [
             [
                 "876a3bba54fc945c"
@@ -2205,7 +2205,7 @@
         "className": "",
         "name": "position OK",
         "x": 1110,
-        "y": 1080,
+        "y": 1060,
         "wires": [
             []
         ]
@@ -2220,7 +2220,7 @@
         "props": [],
         "selectedtype": "geometry_msgs/msg/PoseStamped",
         "x": 800,
-        "y": 1000,
+        "y": 980,
         "wires": [
             []
         ]
@@ -2233,7 +2233,7 @@
         "ros2pkg": "geometry_msgs",
         "ros2message": "PoseStamped",
         "x": 550,
-        "y": 1000,
+        "y": 980,
         "wires": [
             [
                 "58058860c6c9c34e"
@@ -2262,7 +2262,7 @@
         "to": "",
         "reg": false,
         "x": 920,
-        "y": 1080,
+        "y": 1060,
         "wires": [
             [
                 "a43e00118f8bbb05"
@@ -2294,7 +2294,7 @@
         "props": [],
         "selectedtype": "std_msgs/msg/String",
         "x": 350,
-        "y": 1100,
+        "y": 1080,
         "wires": [
             [
                 "33b204ca5682175a"
@@ -2309,7 +2309,7 @@
         "ros2pkg": "std_msgs",
         "ros2message": "String",
         "x": 140,
-        "y": 1100,
+        "y": 1080,
         "wires": [
             [
                 "657ee7743a3c8107"
@@ -2330,7 +2330,7 @@
         "finalize": "",
         "libs": [],
         "x": 560,
-        "y": 1100,
+        "y": 1080,
         "wires": [
             [
                 "75f77fca1b1272ec"
@@ -2357,7 +2357,7 @@
         "className": "",
         "name": "Position pas OK",
         "x": 1120,
-        "y": 1120,
+        "y": 1100,
         "wires": [
             []
         ]
@@ -2384,7 +2384,7 @@
         "to": "",
         "reg": false,
         "x": 920,
-        "y": 1120,
+        "y": 1100,
         "wires": [
             [
                 "457a6559686f5de2"

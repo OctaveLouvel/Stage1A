@@ -197,7 +197,8 @@
             "657ee7743a3c8107",
             "2c18ecb55d7cde61",
             "33b204ca5682175a",
-            "a2246a073cbad85d"
+            "a2246a073cbad85d",
+            "8756168b448ef638"
         ],
         "x": 14,
         "y": 599,
@@ -1645,7 +1646,7 @@
         "step": "1",
         "tooltip": "",
         "delay": 300,
-        "passthru": true,
+        "passthru": false,
         "sendOnDelay": true,
         "sendOnBlur": true,
         "sendOnEnter": true,
@@ -1655,7 +1656,7 @@
         "iconPosition": "left",
         "iconInnerPosition": "inside",
         "spinner": "stacked",
-        "x": 90,
+        "x": 290,
         "y": 640,
         "wires": [
             [
@@ -1691,7 +1692,7 @@
         "iconPosition": "left",
         "iconInnerPosition": "inside",
         "spinner": "stacked",
-        "x": 90,
+        "x": 290,
         "y": 680,
         "wires": [
             [
@@ -1727,7 +1728,7 @@
         "iconPosition": "left",
         "iconInnerPosition": "inside",
         "spinner": "stacked",
-        "x": 90,
+        "x": 290,
         "y": 720,
         "wires": [
             [
@@ -1755,7 +1756,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 250,
+        "x": 450,
         "y": 640,
         "wires": [
             [
@@ -1783,7 +1784,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 250,
+        "x": 450,
         "y": 680,
         "wires": [
             [
@@ -1811,7 +1812,7 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 250,
+        "x": 450,
         "y": 720,
         "wires": [
             [
@@ -1916,7 +1917,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 440,
+        "x": 640,
         "y": 680,
         "wires": [
             []
@@ -2671,6 +2672,32 @@
             [
                 "5f2a5969dbf68176",
                 "42145458cfe2a7f2"
+            ]
+        ]
+    },
+    {
+        "id": "8756168b448ef638",
+        "type": "inject",
+        "z": "37999168f7331a03",
+        "g": "4c874896217ac7b4",
+        "name": "",
+        "props": [
+            {
+                "p": "topic",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 640,
+        "wires": [
+            [
+                "9eda2d1fea34245a"
             ]
         ]
     },
@@ -4292,7 +4319,7 @@
         "type": "function",
         "z": "7eac0d34c6842661",
         "name": "function 10",
-        "func": "let play = \"pause\";\nflow.set(\"play\", play)\nreturn null;",
+        "func": "let play = \"pause\";\nflow.set(\"play\", play)\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -4312,7 +4339,7 @@
         "type": "function",
         "z": "7eac0d34c6842661",
         "name": "function 11",
-        "func": "let play = \"play\";\nflow.set(\"play\", play)\nreturn null;",
+        "func": "let play = \"play\";\nflow.set(\"play\", play)\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
