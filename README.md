@@ -53,47 +53,62 @@ Node red and ros2 are required for this project. You can also add the UR3e robot
 
 You will need the following software installed:
 * Node Red
-  ```sh
-  sudo npm install -g node-red
-  ```
+```sh
+sudo npm install -g node-red
+```
 * ros2
-  ```sh
-  sudo apt update
-  sudo apt install ros-jazzy-desktop
-  sudo apt install python3-colcon-common-extensions
-  ```
+  [See this link for more detailed instructions](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html)
+
+```sh
+sudo apt install software-properties-common
+sudo add-apt-repository universe
+```
+
+```sh
+sudo apt update && sudo apt install curl -y
+export ROS_APT_SOURCE_VERSION=$(curl -s https://api.github.com/repos/ros-infrastructure/ros-apt-source/releases/latest | grep -F "tag_name" | awk -F'"' '{print $4}')
+curl -L -o /tmp/ros2-apt-source.deb "https://github.com/ros-infrastructure/ros-apt-source/releases/download/${ROS_APT_SOURCE_VERSION}/ros2-apt-source_${ROS_APT_SOURCE_VERSION}.$(. /etc/os-release && echo ${UBUNTU_CODENAME:-${VERSION_CODENAME}})_all.deb"
+sudo dpkg -i /tmp/ros2-apt-source.deb
+```
+
+```sh
+sudo apt update && sudo apt upgrade -y
+sudo apt install ros-jazzy-desktop
+sudo apt install python3-colcon-common-extensions
+```
+
 * UR ros2 driver
-  ```sh
-  sudo apt install
-  ros-jazzy-ur-robot-driver ros-jazzy-ur-description
-  ```
+```sh
+sudo apt install ros-jazzy-ur-robot-driver ros-jazzy-ur-description
+```
 
 * RealSense ros2 driver
-  ```sh
-  sudo apt install ros-jazzy-realsense2-camera
-  ```
+```sh
+sudo apt install ros-jazzy-realsense2-camera
+```
+[See this link for more detailed instructions](https://github.com/realsenseai/realsense-ros)
 
 * Orbbec ros2 driver
-  ```sh
-  sudo apt install ros-jazzy-orbbec-camera ros-jazzy-orbbec-description
-  ```
+```sh
+sudo apt install ros-jazzy-orbbec-camera ros-jazzy-orbbec-description
+```
   [See this link for more detailed instructions](https://github.com/orbbec/OrbbecSDK_ROS2)
 
 * Ros Video Server
-  ```sh
-  sudo apt install ros-jazzy-web-video-server
-  ```
+```sh
+sudo apt install ros-jazzy-web-video-server
+```
 
 ### Installation
 
 1. Clone the repo
-   ```sh
-   git clone https://github.com/OctaveLouvel/Stage1A.git
-   ```
+```sh
+git clone https://github.com/OctaveLouvel/Stage1A.git
+```
 2. Install NPM packages
-   ```sh
-   npm install
-   ```
+```sh
+npm install
+```
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

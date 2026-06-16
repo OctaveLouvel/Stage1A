@@ -111,6 +111,10 @@ COMMANDS = {
 
 PROFILES = {
 
+    "NodeRed seul": [
+        "NodeRed"
+    ],
+
     "Robot seul": [
         "NodeRed",
         "UR Driver",
