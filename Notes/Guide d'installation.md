@@ -70,7 +70,8 @@ Pour afficher la caméra
 
 ```sh ros2
 ros2 run web_video_server web_video_server
-
+```
+```sh
 ros2 launch realsense2_camera rs_launch.py \
     enable_depth:=false \
     rgb_camera.profile:=240x240x2
@@ -79,8 +80,29 @@ ros2 launch realsense2_camera rs_launch.py \
 # Pour la camera Astra 2
 https://github.com/orbbec/OrbbecSDK_ROS2
 
-```
+```sh
 ros2 launch orbbec_camera astra2.launch.py \
     color_width:=800 color_height:=600 \
     depth_width:=800 depth_height:=600
 ```
+
+
+
+```sh
+ros2 launch realsense2_camera rs_launch.py \
+    enable_accel:=true \
+    enable_gyro:=true \
+    rgb_camera.color_profile:=640x480x15 \
+    depth_module.depth_profile:=640x480x15
+```
+
+```sh
+ros2 launch rtabmap_launch rtabmap.launch.py \
+    frame_id:=camera_link \
+    rgb_topic:=/camera/camera/color/image_raw \
+    depth_topic:=/camera/camera/depth/image_rect_raw \
+    camera_info_topic:=/camera/camera/color/camera_info \
+    approx_sync:=true
+```
+
+Parametres intrasect

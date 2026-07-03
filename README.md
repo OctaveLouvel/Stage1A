@@ -52,6 +52,12 @@ Node red and ros2 are required for this project. You can also add the UR3e robot
 ### Prerequisites
 
 You will need the following software installed:
+
+* Node.js
+```sh
+sudo apt install nodejs npm
+```
+
 * Node Red
 ```sh
 sudo npm install -g node-red
@@ -98,6 +104,18 @@ sudo apt install ros-jazzy-orbbec-camera ros-jazzy-orbbec-description
 ```sh
 sudo apt install ros-jazzy-web-video-server
 ```
+* Rosdep
+```sh
+sudo apt install python3-rosdep
+sudo rosdep init
+rosdep update
+```
+
+* MoveIt
+```sh
+git clone -b jazzy https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver.git
+```
+
 
 ### Installation
 
@@ -105,9 +123,30 @@ sudo apt install ros-jazzy-web-video-server
 ```sh
 git clone https://github.com/OctaveLouvel/Stage1A.git
 ```
-2. Install NPM packages
+
+* MoveIt
 ```sh
+git clone -b jazzy https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver.git
+```
+
+3. Build the workspace
+```sh
+cd ws/src
+git clone -b jazzy https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver.git
+cd ..
+sudo apt update && rosdep install -r --from-paths . --ignore-src --rosdistro jazzy -y
+source /opt/ros/jazzy/setup.zsh # or bash depending on your shell 
+colcon build --symlink-install
+source install/setup.zsh # or bash depending on your shell
+cd ..
+```
+
+2. Install NPM packages for node red
+```sh
+# You need to have add sourced the ROS2 workspace before running this command
+cd node-red
 npm install
+cd ..
 ```
 
 

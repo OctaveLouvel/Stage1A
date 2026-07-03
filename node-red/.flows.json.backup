@@ -2914,8 +2914,8 @@
         "className": "",
         "value": "args",
         "valueType": "msg",
-        "x": 1750,
-        "y": 100,
+        "x": 1570,
+        "y": 240,
         "wires": []
     },
     {
@@ -2930,8 +2930,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1600,
-        "y": 100,
+        "x": 1420,
+        "y": 240,
         "wires": [
             [
                 "cf098d80e782ab1b"
@@ -2969,8 +2969,8 @@
         "enablePointerup": false,
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
-        "x": 1430,
-        "y": 100,
+        "x": 1250,
+        "y": 240,
         "wires": [
             [
                 "2c321cb0e079f320"
@@ -3731,8 +3731,8 @@
         "winHide": false,
         "oldrc": false,
         "name": "",
-        "x": 590,
-        "y": 1040,
+        "x": 690,
+        "y": 1080,
         "wires": [
             [],
             [],
@@ -3761,7 +3761,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 350,
-        "y": 1040,
+        "y": 1080,
         "wires": [
             [
                 "24a0795041862183"
@@ -4066,7 +4066,7 @@
         "pointerupPayload": "",
         "pointerupPayloadType": "str",
         "x": 250,
-        "y": 980,
+        "y": 1020,
         "wires": [
             [
                 "c17f39b42219acde"
@@ -4273,7 +4273,7 @@
         "type": "function",
         "z": "7eac0d34c6842661",
         "name": "set play status",
-        "func": "let play = \"stop\";\nflow.set(\"play\", play)\nreturn null;",
+        "func": "let play = \"stop\";\nflow.set(\"play\", play)\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -4281,7 +4281,7 @@
         "finalize": "",
         "libs": [],
         "x": 420,
-        "y": 980,
+        "y": 1020,
         "wires": [
             [
                 "24a0795041862183"
