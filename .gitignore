@@ -5,4 +5,5 @@ log
 lib
 node_modules
 bags/
-Notes
+/Notes/
+__pycache__/
