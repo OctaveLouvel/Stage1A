@@ -150,7 +150,8 @@ class MotionManager(Node):
             paths = [
                 'points.yaml',
                 os.path.join(os.getcwd(), 'points.yaml'),
-                '/home/stlab24-04/ur3e_ws/src/ur_motion_manager/ur_motion_manager/points.yaml'
+                # Fallback: points.yaml shipped alongside this node in the package
+                os.path.join(os.path.dirname(__file__), 'points.yaml')
             ]
             
             data = None

@@ -83,7 +83,7 @@ COMMANDS = {
     "RealSense": f"""
     {ROS_SETUP}
     {WORKSPACE_SETUP}
-    ros2 launch realsense2_camerars_launch.py \
+    ros2 launch realsense2_camera rs_launch.py \
         enable_accel:=true \
         enable_gyro:=true \
         rgb_camera.color_profile:=640x480x15 \
