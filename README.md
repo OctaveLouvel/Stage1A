@@ -58,6 +58,10 @@ Fonctionnalités couvertes :
 - **Monitoring** — position, vitesse et effort de chaque articulation en temps réel.
 - **Enregistrement / relecture** — capture et rejeu des données au format `rosbag`
   directement depuis l'interface.
+- **Passerelle FANUC (TCP/KAREL)** — une page supplémentaire pilote un bras FANUC
+  par communication TCP directe. Elle intègre à cette interface une brique de
+  communication KAREL initialement présentée par un autre étudiant (voir
+  [Page « Contrôle robot TCP »](#interface-node-red)).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -261,7 +265,7 @@ http://localhost:1880/dashboard
 <a id="interface-node-red"></a>
 ## L'interface Node-RED
 
-L'interface est organisée en deux pages.
+L'interface est organisée en trois pages.
 
 ### Page « View and Move »
 
@@ -287,6 +291,46 @@ L'interface est organisée en deux pages.
 C'est ce module qui répond au besoin d'**enregistrement et d'exportation des données**
 (états du robot, commandes, caméra) pour analyse ultérieure.
 
+### Page « Contrôle robot TCP » (robot FANUC / KAREL)
+
+Cette page pilote un bras **FANUC** via une communication **TCP directe** avec un
+serveur écrit en **KAREL** (le langage des contrôleurs FANUC), sur le port `59002`.
+Elle réutilise et intègre à cette interface une brique de communication TCP/KAREL
+**présentée par un autre étudiant** : le travail de reprise a consisté à en faire une
+page cohérente du tableau de bord, à normaliser le protocole d'échange et à la rendre
+démontrable de manière autonome.
+
+- **Commande** — choisir un axe (`J1`–`J6`), saisir un angle et cliquer `Envoyer` ;
+  boutons `Home` (retour repos) et `Quitter` (fermeture de connexion).
+- **État du robot** — affiche la réponse brute du serveur et les positions
+  articulaires courantes (J1–J3 et J4–J6), avec des notifications
+  *Position atteinte* / *Hors limites* / *Déconnexion*.
+
+Contrairement à l'UR3e (piloté par ROS 2), le FANUC est ici commandé par de simples
+messages texte en TCP — ce qui illustre que la même philosophie d'IHM pédagogique
+Node-RED s'adapte à des robots de marques et protocoles différents.
+
+**Protocole** (ASCII brut, sans caractère de fin de ligne côté commande) :
+
+| Sens | Message | Signification |
+|------|---------|---------------|
+| IHM → robot | `Jx:angle` (ex. `J1:45`) | Déplace l'axe *x* de *angle* degrés |
+| IHM → robot | `HOME` | Retour à la position de repos |
+| IHM → robot | `exit` | Ferme la connexion |
+| robot → IHM | `POSITION ATTEINTE;J1:v;…;J6:v` | Mouvement effectué + positions |
+| robot → IHM | `HORS LIMITES;J1:v;…;J6:v` | Mouvement refusé (butée logicielle) |
+| robot → IHM | `EXIT OK` | Connexion fermée |
+
+Le serveur côté contrôleur est fourni dans `fanuc/robot_tcp_server.kl`. Pour
+**démontrer la page sans robot FANUC**, un serveur de simulation Python reproduit
+exactement le même protocole :
+
+```sh
+python3 fanuc/mock_karel_server.py     # écoute sur le port 59002
+```
+
+Il suffit ensuite d'ouvrir la page « Contrôle robot TCP » et d'envoyer des commandes.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- STRUCTURE -->
@@ -305,6 +349,9 @@ C'est ce module qui répond au besoin d'**enregistrement et d'exportation des do
 │       ├── realsense-ros/        # Driver caméra RealSense
 │       └── OrbbecSDK_ROS2/       # Driver caméra Orbbec
 ├── node-red/            # Flows et configuration Node-RED
+├── fanuc/               # Communication TCP/KAREL avec un robot FANUC
+│   ├── robot_tcp_server.kl    # Serveur KAREL (côté contrôleur FANUC)
+│   └── mock_karel_server.py   # Serveur de simulation (démo sans robot)
 └── bags/                # Enregistrements rosbag (générés à l'usage)
 ```
 

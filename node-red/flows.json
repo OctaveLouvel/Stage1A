@@ -4451,5 +4451,852 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "tabtcp00000001",
+        "type": "tab",
+        "label": "IHM TCP Fanuc",
+        "disabled": false,
+        "info": "IHM Node-RED communiquant directement en TCP avec le serveur Karel VFinale_move_joints (port 59002), sans script Python intermédiaire.",
+        "env": []
+    },
+    {
+        "id": "2d36c3130887d4fd",
+        "type": "ui-group",
+        "name": "Select connection",
+        "page": "f04468f063e29700",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "uithemetcp0001",
+        "type": "ui-theme",
+        "name": "Theme TCP",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094ce",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "uipagetcp00001",
+        "type": "ui-page",
+        "name": "Contrôle robot TCP",
+        "ui": "0a82d6cde910b9ce",
+        "path": "/robot-tcp",
+        "icon": "robot-industrial",
+        "layout": "grid",
+        "theme": "uithemetcp0001",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "uigrpcmd000001",
+        "type": "ui-group",
+        "name": "Commande",
+        "page": "uipagetcp00001",
+        "width": "6",
+        "height": "1",
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "uigrpetat00001",
+        "type": "ui-group",
+        "name": "État du robot",
+        "page": "uipagetcp00001",
+        "width": "6",
+        "height": "1",
+        "order": 2,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "5463bc66ad767695",
+        "type": "ui-text-input",
+        "z": "37999168f7331a03",
+        "group": "2d36c3130887d4fd",
+        "name": "",
+        "label": "text",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "topic": "topic",
+        "topicType": "msg",
+        "mode": "number",
+        "tooltip": "",
+        "delay": 300,
+        "passthru": true,
+        "sendOnDelay": false,
+        "sendOnBlur": true,
+        "sendOnEnter": true,
+        "className": "",
+        "clearable": false,
+        "sendOnClear": false,
+        "icon": "ip",
+        "iconPosition": "left",
+        "iconInnerPosition": "inside",
+        "x": 190,
+        "y": 700,
+        "wires": [
+            [
+                "b7f01dc91119464f"
+            ]
+        ]
+    },
+    {
+        "id": "b7f01dc91119464f",
+        "type": "function",
+        "z": "37999168f7331a03",
+        "name": "set tcp connection",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "41314bc468cb6eca",
+        "type": "function",
+        "z": "37999168f7331a03",
+        "name": "function 9",
+        "func": "msg._session = \"192.168.1.1\"\nmsg.host = \"\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 1300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b69be92944690dfb",
+        "type": "tcp request",
+        "z": "37999168f7331a03",
+        "name": "",
+        "server": "",
+        "port": "",
+        "out": "time",
+        "ret": "buffer",
+        "splitc": "0",
+        "newline": "",
+        "trim": false,
+        "tls": "",
+        "x": 390,
+        "y": 1400,
+        "wires": [
+            [
+                "33b204ca5682175a"
+            ]
+        ]
+    },
+    {
+        "id": "eb1c9dd6ab04247a",
+        "type": "tcp request",
+        "z": "37999168f7331a03",
+        "name": "",
+        "server": "",
+        "port": "",
+        "out": "time",
+        "ret": "buffer",
+        "splitc": "0",
+        "newline": "",
+        "trim": false,
+        "tls": "",
+        "x": 790,
+        "y": 1300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "36b076490b356c42",
+        "type": "tcp request",
+        "z": "37999168f7331a03",
+        "g": "2d2a5e96dc4978ef",
+        "name": "",
+        "server": "",
+        "port": "",
+        "out": "time",
+        "ret": "buffer",
+        "splitc": "0",
+        "newline": "",
+        "trim": false,
+        "tls": "",
+        "x": 590,
+        "y": 100,
+        "wires": [
+            [
+                "5dee394fc916b9b7"
+            ]
+        ]
+    },
+    {
+        "id": "8bc818d9585c1aff",
+        "type": "tcp in",
+        "z": "37999168f7331a03",
+        "g": "f6ed4aabf676c162",
+        "name": "",
+        "server": "server",
+        "host": "",
+        "port": "59002",
+        "datamode": "stream",
+        "datatype": "utf8",
+        "newline": ";",
+        "topic": "",
+        "trim": false,
+        "base64": false,
+        "tls": "",
+        "x": 900,
+        "y": 460,
+        "wires": [
+            [
+                "d5acd84142090c52",
+                "ed90c8abb10bebd4",
+                "8ae62da8e903d221"
+            ]
+        ]
+    },
+    {
+        "id": "5dee394fc916b9b7",
+        "type": "debug",
+        "z": "37999168f7331a03",
+        "g": "2d2a5e96dc4978ef",
+        "name": "debug 12",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "ddjoint0000001",
+        "type": "ui-dropdown",
+        "z": "tabtcp00000001",
+        "group": "uigrpcmd000001",
+        "name": "Sélection joint",
+        "label": "Joint",
+        "tooltip": "",
+        "order": 1,
+        "width": "3",
+        "height": "1",
+        "passthru": false,
+        "multiple": false,
+        "chips": false,
+        "clearable": false,
+        "options": [
+            {
+                "label": "J1",
+                "value": "1",
+                "type": "str"
+            },
+            {
+                "label": "J2",
+                "value": "2",
+                "type": "str"
+            },
+            {
+                "label": "J3",
+                "value": "3",
+                "type": "str"
+            },
+            {
+                "label": "J4",
+                "value": "4",
+                "type": "str"
+            },
+            {
+                "label": "J5",
+                "value": "5",
+                "type": "str"
+            },
+            {
+                "label": "J6",
+                "value": "6",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "joint",
+        "topicType": "str",
+        "className": "",
+        "typeIsComboBox": false,
+        "msgTrigger": "onChange",
+        "x": 140,
+        "y": 120,
+        "wires": [
+            [
+                "fnstorejoint01"
+            ]
+        ]
+    },
+    {
+        "id": "fnstorejoint01",
+        "type": "function",
+        "z": "tabtcp00000001",
+        "name": "mémorise joint",
+        "func": "flow.set(\"joint\", msg.payload);\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "numangle000001",
+        "type": "ui-number-input",
+        "z": "tabtcp00000001",
+        "group": "uigrpcmd000001",
+        "name": "Angle",
+        "label": "Déplacement (°)",
+        "order": 2,
+        "width": "3",
+        "height": "1",
+        "topic": "angle",
+        "topicType": "str",
+        "min": "-360",
+        "max": "360",
+        "step": "1",
+        "tooltip": "Déplacement relatif en degrés",
+        "delay": 300,
+        "passthru": false,
+        "sendOnDelay": true,
+        "sendOnBlur": true,
+        "sendOnEnter": true,
+        "className": "",
+        "clearable": false,
+        "icon": "",
+        "iconPosition": "left",
+        "iconInnerPosition": "inside",
+        "spinner": "stacked",
+        "x": 130,
+        "y": 180,
+        "wires": [
+            [
+                "fnstoreangle01"
+            ]
+        ]
+    },
+    {
+        "id": "fnstoreangle01",
+        "type": "function",
+        "z": "tabtcp00000001",
+        "name": "mémorise angle",
+        "func": "flow.set(\"angle\", msg.payload);\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "btnenvoyer0001",
+        "type": "ui-button",
+        "z": "tabtcp00000001",
+        "group": "uigrpcmd000001",
+        "name": "",
+        "label": "Envoyer",
+        "order": 3,
+        "width": "2",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "Envoie Jx:angle au robot",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "send",
+        "iconPosition": "left",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 130,
+        "y": 260,
+        "wires": [
+            [
+                "fnbuildcmd0001"
+            ]
+        ]
+    },
+    {
+        "id": "fnbuildcmd0001",
+        "type": "function",
+        "z": "tabtcp00000001",
+        "name": "construit Jx:angle",
+        "func": "const joint = flow.get(\"joint\") || \"1\";\nconst angle = flow.get(\"angle\");\n\nif (angle === undefined || angle === null || angle === \"\" || isNaN(Number(angle))) {\n    node.warn(\"Veuillez entrer un angle valide\");\n    msg.payload = \"Veuillez entrer un angle valide.\";\n    return [null, msg];\n}\n\n// IMPORTANT : pas de \\n final, le serveur Karel lit les octets bruts\nmsg.payload = \"J\" + joint + \":\" + angle;\nreturn [msg, null];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 260,
+        "wires": [
+            [
+                "tcpreq00000001"
+            ],
+            [
+                "txtreponse0001"
+            ]
+        ]
+    },
+    {
+        "id": "btnhome0000001",
+        "type": "ui-button",
+        "z": "tabtcp00000001",
+        "group": "uigrpcmd000001",
+        "name": "",
+        "label": "Home",
+        "order": 4,
+        "width": "2",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "Retour position HOME",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "home",
+        "iconPosition": "left",
+        "payload": "HOME",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "green",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 120,
+        "y": 320,
+        "wires": [
+            [
+                "tcpreq00000001"
+            ]
+        ]
+    },
+    {
+        "id": "btnquit0000001",
+        "type": "ui-button",
+        "z": "tabtcp00000001",
+        "group": "uigrpcmd000001",
+        "name": "",
+        "label": "Quitter",
+        "order": 5,
+        "width": "2",
+        "height": "1",
+        "emulateClick": false,
+        "tooltip": "Ferme la connexion côté robot",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "power",
+        "iconPosition": "left",
+        "payload": "exit",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "buttonColor": "red",
+        "textColor": "",
+        "iconColor": "",
+        "enableClick": true,
+        "enablePointerdown": false,
+        "pointerdownPayload": "",
+        "pointerdownPayloadType": "str",
+        "enablePointerup": false,
+        "pointerupPayload": "",
+        "pointerupPayloadType": "str",
+        "x": 120,
+        "y": 380,
+        "wires": [
+            [
+                "tcpreq00000001"
+            ]
+        ]
+    },
+    {
+        "id": "tcpreq00000001",
+        "type": "tcp request",
+        "z": "tabtcp00000001",
+        "name": "Robot Fanuc :59002",
+        "server": "127.0.0.1",
+        "port": "59002",
+        "out": "sit",
+        "ret": "string",
+        "splitc": " ",
+        "newline": "",
+        "trim": false,
+        "tls": "",
+        "x": 640,
+        "y": 320,
+        "wires": [
+            [
+                "fnparse0000001"
+            ]
+        ]
+    },
+    {
+        "id": "fnparse0000001",
+        "type": "function",
+        "z": "tabtcp00000001",
+        "name": "parse réponse robot",
+        "func": "const txt = String(msg.payload).trim();\nif (txt === \"\") { return null; }\n\nif (txt.indexOf(\"EXIT OK\") !== -1) {\n    msg.reponse = \"EXIT OK - Connexion fermée par le robot\";\n    msg.positions = null;\n    return msg;\n}\n\nconst parts = txt.split(\";\").map(p => p.trim()).filter(p => p !== \"\");\nmsg.reponse = parts[0] || txt;\n\nconst positions = {};\nfor (const jp of parts.slice(1)) {\n    const idx = jp.indexOf(\":\");\n    if (idx > 0) {\n        positions[jp.substring(0, idx)] = jp.substring(idx + 1);\n    }\n}\nmsg.positions = Object.keys(positions).length > 0 ? positions : null;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 320,
+        "wires": [
+            [
+                "chgreponse0001",
+                "fnline1000001",
+                "fnline2000001",
+                "swnotif0000001"
+            ]
+        ]
+    },
+    {
+        "id": "chgreponse0001",
+        "type": "change",
+        "z": "tabtcp00000001",
+        "name": "payload = réponse",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "reponse",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 220,
+        "wires": [
+            [
+                "txtreponse0001"
+            ]
+        ]
+    },
+    {
+        "id": "txtreponse0001",
+        "type": "ui-text",
+        "z": "tabtcp00000001",
+        "group": "uigrpetat00001",
+        "order": 1,
+        "width": "6",
+        "height": "1",
+        "name": "Réponse du robot",
+        "label": "Réponse :",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#333333",
+        "wrapText": true,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 1370,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "fnline1000001",
+        "type": "function",
+        "z": "tabtcp00000001",
+        "name": "ligne J1-J3",
+        "func": "const p = msg.positions;\nif (!p) {\n    msg.payload = \"J1: - | J2: - | J3: -\";\n    return msg;\n}\nmsg.payload = [\"J1\", \"J2\", \"J3\"].map(k => k + \": \" + (p[k] !== undefined ? p[k] : \"-\")).join(\"  |  \");\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1110,
+        "y": 300,
+        "wires": [
+            [
+                "txtline1000001"
+            ]
+        ]
+    },
+    {
+        "id": "txtline1000001",
+        "type": "ui-text",
+        "z": "tabtcp00000001",
+        "group": "uigrpetat00001",
+        "order": 2,
+        "width": "6",
+        "height": "1",
+        "name": "Positions J1-J3",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "style": true,
+        "font": "Courier New",
+        "fontSize": 16,
+        "color": "#333333",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 1360,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "fnline2000001",
+        "type": "function",
+        "z": "tabtcp00000001",
+        "name": "ligne J4-J6",
+        "func": "const p = msg.positions;\nif (!p) {\n    msg.payload = \"J4: - | J5: - | J6: -\";\n    return msg;\n}\nmsg.payload = [\"J4\", \"J5\", \"J6\"].map(k => k + \": \" + (p[k] !== undefined ? p[k] : \"-\")).join(\"  |  \");\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1110,
+        "y": 360,
+        "wires": [
+            [
+                "txtline2000001"
+            ]
+        ]
+    },
+    {
+        "id": "txtline2000001",
+        "type": "ui-text",
+        "z": "tabtcp00000001",
+        "group": "uigrpetat00001",
+        "order": 3,
+        "width": "6",
+        "height": "1",
+        "name": "Positions J4-J6",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-center",
+        "style": true,
+        "font": "Courier New",
+        "fontSize": 16,
+        "color": "#333333",
+        "wrapText": false,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 1360,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "swnotif0000001",
+        "type": "switch",
+        "z": "tabtcp00000001",
+        "name": "type de réponse",
+        "property": "reponse",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "HORS LIMITES",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "ATTEINTE",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "EXIT OK",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 1120,
+        "y": 460,
+        "wires": [
+            [
+                "notifhorslim01"
+            ],
+            [
+                "notifok0000001"
+            ],
+            [
+                "notifexit00001"
+            ]
+        ]
+    },
+    {
+        "id": "notifhorslim01",
+        "type": "ui-notification",
+        "z": "tabtcp00000001",
+        "ui": "0a82d6cde910b9ce",
+        "position": "top right",
+        "colorDefault": false,
+        "color": "#e01b24",
+        "displayTime": "3",
+        "showCountdown": true,
+        "outputs": 1,
+        "allowDismiss": true,
+        "dismissText": "Close",
+        "allowConfirm": false,
+        "confirmText": "Confirm",
+        "raw": false,
+        "className": "",
+        "name": "Hors limites",
+        "x": 1350,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "notifok0000001",
+        "type": "ui-notification",
+        "z": "tabtcp00000001",
+        "ui": "0a82d6cde910b9ce",
+        "position": "top right",
+        "colorDefault": false,
+        "color": "#33d17a",
+        "displayTime": "2",
+        "showCountdown": true,
+        "outputs": 1,
+        "allowDismiss": true,
+        "dismissText": "Close",
+        "allowConfirm": false,
+        "confirmText": "Confirm",
+        "raw": false,
+        "className": "",
+        "name": "Position atteinte",
+        "x": 1360,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "notifexit00001",
+        "type": "ui-notification",
+        "z": "tabtcp00000001",
+        "ui": "0a82d6cde910b9ce",
+        "position": "top right",
+        "colorDefault": false,
+        "color": "#f6d32d",
+        "displayTime": "3",
+        "showCountdown": true,
+        "outputs": 1,
+        "allowDismiss": true,
+        "dismissText": "Close",
+        "allowConfirm": false,
+        "confirmText": "Confirm",
+        "raw": false,
+        "className": "",
+        "name": "Déconnexion",
+        "x": 1350,
+        "y": 500,
+        "wires": [
+            []
+        ]
     }
 ]

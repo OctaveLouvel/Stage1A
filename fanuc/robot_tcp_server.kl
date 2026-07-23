@@ -1,0 +1,159 @@
+PROGRAM robot_tcp_server
+--------------------------------------------------------------------------
+-- Serveur TCP/KAREL pour l'interface Node-RED "Contrôle robot TCP"
+--
+-- Ce programme tourne sur le controleur FANUC. Il ouvre un socket serveur
+-- sur le port 59002 et dialogue avec le flow Node-RED (client "tcp request").
+--
+-- Protocole (texte ASCII, sans caractere de fin de ligne cote commande) :
+--   Commandes recues :
+--       "Jx:angle"   ex "J1:45"  -> deplace l'axe x de <angle> degres
+--       "HOME"                   -> retour a la position de repos
+--       "exit"                   -> ferme la connexion
+--   Reponses envoyees (champs separes par ';') :
+--       "<STATUT>;J1:v;J2:v;J3:v;J4:v;J5:v;J6:v"
+--   ou <STATUT> contient un mot-cle reconnu par l'interface :
+--       "POSITION ATTEINTE"  -> notification "Position atteinte"
+--       "HORS LIMITES"       -> notification "Hors limites" (mouvement refuse)
+--       "EXIT OK"            -> notification "Deconnexion"
+--
+-- Pre-requis controleur : configurer une balise serveur (SETUP > Host Comm,
+-- protocole "SM") sur le port 59002. La balise utilisee ici est 'S8:'.
+--------------------------------------------------------------------------
+%NOLOCKGROUP
+%COMMENT = 'TCP Karel server'
+
+VAR
+    sock        : FILE          -- flux lie a la balise socket
+    status      : INTEGER
+    tag_str     : STRING[4]
+    cmd         : STRING[128]    -- commande recue
+    resp        : STRING[254]    -- reponse a renvoyer
+    running     : BOOLEAN
+    joint_idx   : INTEGER
+    delta       : REAL
+    colon       : INTEGER
+
+    cur_jpos    : JOINTPOS       -- position articulaire courante
+    tgt_jpos    : JOINTPOS       -- position cible
+    angles      : ARRAY[9] OF REAL  -- angles par axe (degres)
+    ok_move     : BOOLEAN
+
+    -- limites logicielles (degres) appliquees en demonstration
+    lim_min     : REAL
+    lim_max     : REAL
+
+--------------------------------------------------------------------------
+-- Construit la reponse "<statut>;J1:..;...;J6:.." a partir de 'angles'
+--------------------------------------------------------------------------
+ROUTINE build_reply(statut : STRING; a : ARRAY[9] OF REAL) : STRING
+VAR
+    s   : STRING[254]
+    num : STRING[16]
+    i   : INTEGER
+    st  : INTEGER
+BEGIN
+    s = statut
+    FOR i = 1 TO 6 DO
+        CNV_REAL_STR(a[i], 6, 2, num)   -- angle -> chaine (2 decimales)
+        s = s + ';J' + INT_TO_STR(i) + ':' + num
+    ENDFOR
+    RETURN(s)
+END build_reply
+
+--------------------------------------------------------------------------
+-- Programme principal
+--------------------------------------------------------------------------
+BEGIN
+    tag_str = 'S8:'
+    lim_min = -180.0
+    lim_max =  180.0
+
+    -- Parametres de mouvement pour la demonstration (vitesse prudente)
+    $GROUP[1].$SPEED    = 20.0
+    $GROUP[1].$MOTYPE   = JOINT
+    $GROUP[1].$TERMTYPE = FINE
+
+    -- Ouverture du socket serveur (attend la connexion du client Node-RED)
+    MSG_DISCO(tag_str, status)
+    MSG_CONNECT(tag_str, status)
+    IF status <> 0 THEN
+        POST_ERR(status, '', 0, 0)
+        RETURN
+    ENDIF
+    OPEN FILE sock (' rw', tag_str)
+
+    running = TRUE
+    WHILE running DO
+
+        -- Lecture d'une commande envoyee par l'interface
+        READ sock (cmd::-1)          -- lit la chaine brute disponible
+        IF UNINIT(cmd) THEN
+            cmd = ''
+        ENDIF
+
+        -- Position articulaire courante -> tableau d'angles (degres)
+        cur_jpos = CURJPOS(0, 0)
+        CNV_JPOS_REL(cur_jpos, angles, status)
+
+        SELECT TRUE OF
+
+            -- ---- Deconnexion demandee ----
+            CASE (cmd = 'exit') :
+                resp = 'EXIT OK'
+                WRITE sock (resp, CR)
+                running = FALSE
+
+            -- ---- Retour maison ----
+            CASE (SUB_STR(cmd, 1, 4) = 'HOME') :
+                FOR joint_idx = 1 TO 9 DO
+                    angles[joint_idx] = 0.0
+                ENDFOR
+                angles[2] = -90.0        -- epaule
+                angles[3] =  90.0        -- coude
+                CNV_REL_JPOS(angles, tgt_jpos, status)
+                MOVE TO tgt_jpos
+                resp = build_reply('POSITION ATTEINTE', angles)
+                WRITE sock (resp, CR)
+
+            -- ---- Deplacement d'un axe : "Jx:angle" ----
+            CASE (SUB_STR(cmd, 1, 1) = 'J') :
+                colon     = INDEX(cmd, ':')
+                joint_idx = STR_TO_INT(SUB_STR(cmd, 2, colon - 2))
+                delta     = STR_TO_REAL(SUB_STR(cmd, colon + 1, 32))
+
+                ok_move = TRUE
+                IF (joint_idx < 1) OR (joint_idx > 6) THEN
+                    ok_move = FALSE
+                ENDIF
+                IF ok_move THEN
+                    -- verification des limites logicielles
+                    IF (angles[joint_idx] + delta < lim_min) OR
+                       (angles[joint_idx] + delta > lim_max) THEN
+                        ok_move = FALSE
+                    ENDIF
+                ENDIF
+
+                IF ok_move THEN
+                    angles[joint_idx] = angles[joint_idx] + delta
+                    CNV_REL_JPOS(angles, tgt_jpos, status)
+                    MOVE TO tgt_jpos
+                    resp = build_reply('POSITION ATTEINTE', angles)
+                ELSE
+                    resp = build_reply('HORS LIMITES', angles)
+                ENDIF
+                WRITE sock (resp, CR)
+
+            -- ---- Commande inconnue ----
+            ELSE :
+                resp = build_reply('COMMANDE INCONNUE', angles)
+                WRITE sock (resp, CR)
+
+        ENDSELECT
+
+    ENDWHILE
+
+    CLOSE FILE sock
+    MSG_DISCO(tag_str, status)
+
+END robot_tcp_server
