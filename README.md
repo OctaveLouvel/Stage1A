@@ -1,218 +1,323 @@
 <a id="readme-top"></a>
 
-
-
 <!-- PROJECT PRESENTATION -->
 <br/>
 <div align="center">
-<h3 align="center">UR3e Robot Control with Node Red and ROS2</h3>
+<h3 align="center">Plateforme UR3e — ROS 2 + Node-RED</h3>
   <p align="center">
-    A implementaion of node red and ros2 for controlling a UR3e robot with MoveIt and a force controller and more.
+    Architecture logicielle unifiée pour piloter un bras Universal Robots UR3e
+    (commande articulaire, cartésienne et en effort), visualiser les caméras
+    et enregistrer les données, le tout depuis une interface Node-RED pédagogique.
     <br />
   </p>
 </div>
 
-
-
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary>Table des matières</summary>
   <ol>
+    <li><a href="#a-propos">À propos du projet</a></li>
+    <li><a href="#architecture">Architecture</a></li>
     <li>
-      <a href="#about-the-project">About The Project</a>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#installation">Installation</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#prerequis">Prérequis</a></li>
+        <li><a href="#construction-du-workspace">Construction du workspace</a></li>
+        <li><a href="#node-red">Node-RED</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#utilisation">Utilisation</a></li>
+    <li><a href="#interface-node-red">L'interface Node-RED</a></li>
+    <li><a href="#structure-du-depot">Structure du dépôt</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
-## About The Project
+<a id="a-propos"></a>
+## À propos du projet
 
-This project is a ROS2 workspace that contains several packages for controlling a UR3e robot with MoveIt and a force controller. 2 different node red flows are provided. It also contains packages for connecting to different sensors such as RealSense and Orbbec cameras. The main aspect of the project is it's use for learning. You can add your own nodes and use the Node Red interface to connect them together.
+Plusieurs briques logicielles (commande en effort, commande en position/vitesse,
+lecture des caméras) avaient été développées séparément autour d'un bras **Universal
+Robots UR3e**. Ce dépôt les réunit dans un **workspace ROS 2 unique** et fournit une
+**interface Node-RED** pensée comme un outil pédagogique : on y sélectionne les
+mouvements, on visualise l'état du robot et les caméras, et on enregistre/rejoue les
+données sans avoir à taper de commandes ROS.
+
+Le projet fonctionne aussi bien avec le **robot réel** qu'en **simulation** (matériel
+simulé `use_mock_hardware`), ce qui permet de l'utiliser en TP sans robot branché.
+
+Fonctionnalités couvertes :
+
+- **Commande articulaire** — déplacer chaque articulation par des sliders.
+- **Commande cartésienne** — envoyer une pose (x, y, z + orientation) résolue par
+  cinématique inverse via MoveIt.
+- **Commande en effort** — contrôleur de force dédié (nœuds `ur_force_controller`,
+  `ur_safety_monitor`, `ur_motion_manager`).
+- **Visualisation caméra** — flux RealSense ou Orbbec affiché dans le navigateur.
+- **Monitoring** — position, vitesse et effort de chaque articulation en temps réel.
+- **Enregistrement / relecture** — capture et rejeu des données au format `rosbag`
+  directement depuis l'interface.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- ARCHITECTURE -->
+<a id="architecture"></a>
+## Architecture
 
-<!-- GETTING STARTED -->
-## Getting Started
+L'interface Node-RED communique avec le robot **uniquement via des topics et services
+ROS 2**. Elle ne parle jamais directement au matériel : tout passe par le driver UR et
+les nœuds du workspace.
 
-Node red and ros2 are required for this project. You can also add the UR3e robot and a RealSense or Orbbec camera to the project. The project is designed to be used with a UR3e robot, but it can be adapted to work with other robots as well. The vidéo playback on Node Red is done with the help of the ros2 web video server package.
+```mermaid
+flowchart TB
+    subgraph UI["🖥️ Interface Node-RED (http://localhost:1880/dashboard)"]
+        P1["Page « View and Move »<br/>Move Joints · Déplacement point<br/>Positions / Vitesses / Effort · Caméra"]
+        P2["Page « Record and Play »<br/>Record · Data · Playback"]
+    end
 
-### Prerequisites
+    subgraph ROS["🤖 Workspace ROS 2 (ws/)"]
+        PTM["pose_to_moveit<br/>(pose → cinématique inverse)"]
+        MM["ur_motion_manager<br/>(séquences, teach)"]
+        FC["ur_force_controller<br/>(commande en effort)"]
+        SM["ur_safety_monitor<br/>(surveillance sécurité)"]
+    end
 
-You will need the following software installed:
+    subgraph DRV["⚙️ Driver & MoveIt"]
+        UR["ur_robot_driver"]
+        MI["ur_moveit_config<br/>(service /compute_ik)"]
+    end
 
-* Node.js
-```sh
-sudo apt install nodejs npm
+    subgraph CAM["📷 Caméras"]
+        RS["realsense2_camera / orbbec_camera"]
+        WVS["web_video_server<br/>(flux MJPEG navigateur)"]
+    end
+
+    ROBOT(["Bras UR3e<br/>(réel ou simulé)"])
+
+    P1 -- "/target_pose<br/>(PoseStamped)" --> PTM
+    P1 -- "/scaled_joint_trajectory_controller/joint_trajectory<br/>(JointTrajectory)" --> UR
+    PTM -- "/compute_ik" --> MI
+    PTM -- "trajectoire" --> UR
+    PTM -- "/move_result (String)" --> P1
+    FC --> UR
+    MM --> UR
+    UR -- "/joint_states<br/>(position · vitesse · effort)" --> P1
+    UR <--> ROBOT
+    RS --> WVS
+    WVS -- "flux image" --> P1
+    P2 -- "ros2 bag record / play" --> ROS
 ```
 
-* Node Red
+**Topics et messages principaux :**
+
+| Topic | Type de message | Sens | Rôle |
+|-------|-----------------|------|------|
+| `/target_pose` | `geometry_msgs/PoseStamped` | UI → `pose_to_moveit` | Cible cartésienne |
+| `/scaled_joint_trajectory_controller/joint_trajectory` | `trajectory_msgs/JointTrajectory` | UI / `pose_to_moveit` → driver | Consigne articulaire |
+| `/joint_states` | `sensor_msgs/JointState` | driver → UI | Position, vitesse, effort |
+| `/move_result` | `std_msgs/String` | `pose_to_moveit` → UI | Retour de la résolution IK |
+| `/compute_ik` (service) | `moveit_msgs/GetPositionIK` | `pose_to_moveit` → MoveIt | Cinématique inverse |
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- INSTALLATION -->
+<a id="installation"></a>
+## Installation
+
+Testé sur **Ubuntu 24.04** avec **ROS 2 Jazzy**.
+
+<a id="prerequis"></a>
+### Prérequis
+
+**1. Node.js et Node-RED**
+
+Node-RED nécessite **Node.js ≥ 22**. La version fournie par défaut par Ubuntu 24.04
+(v18) est trop ancienne : on installe donc Node.js 22 via NodeSource.
+
 ```sh
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+sudo apt install -y nodejs
 sudo npm install -g node-red
 ```
-* ros2
-  [See this link for more detailed instructions](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html)
+
+Vérifier : `node --version` doit afficher `v22.x` ou plus.
+
+**2. ROS 2 Jazzy** ([instructions détaillées](https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html))
 
 ```sh
 sudo apt install software-properties-common
 sudo add-apt-repository universe
-```
 
-```sh
 sudo apt update && sudo apt install curl -y
 export ROS_APT_SOURCE_VERSION=$(curl -s https://api.github.com/repos/ros-infrastructure/ros-apt-source/releases/latest | grep -F "tag_name" | awk -F'"' '{print $4}')
 curl -L -o /tmp/ros2-apt-source.deb "https://github.com/ros-infrastructure/ros-apt-source/releases/download/${ROS_APT_SOURCE_VERSION}/ros2-apt-source_${ROS_APT_SOURCE_VERSION}.$(. /etc/os-release && echo ${UBUNTU_CODENAME:-${VERSION_CODENAME}})_all.deb"
 sudo dpkg -i /tmp/ros2-apt-source.deb
-```
 
-```sh
 sudo apt update && sudo apt upgrade -y
-sudo apt install ros-jazzy-desktop
-sudo apt install python3-colcon-common-extensions
+sudo apt install ros-jazzy-desktop python3-colcon-common-extensions
 ```
 
-* UR ros2 driver
-```sh
-sudo apt install ros-jazzy-ur-robot-driver ros-jazzy-ur-description
-```
+**3. Driver UR, caméras et outils**
 
-* RealSense ros2 driver
 ```sh
+# Driver, description et configuration MoveIt Universal Robots
+sudo apt install ros-jazzy-ur-robot-driver ros-jazzy-ur-description ros-jazzy-ur-moveit-config
+
+# Caméra RealSense — https://github.com/IntelRealSense/realsense-ros
 sudo apt install ros-jazzy-realsense2-camera
-```
-[See this link for more detailed instructions](https://github.com/realsenseai/realsense-ros)
 
-* Orbbec ros2 driver
-```sh
+# Caméra Orbbec — https://github.com/orbbec/OrbbecSDK_ROS2
 sudo apt install ros-jazzy-orbbec-camera ros-jazzy-orbbec-description
-```
-  [See this link for more detailed instructions](https://github.com/orbbec/OrbbecSDK_ROS2)
 
-* Ros Video Server
-```sh
+# Serveur vidéo pour afficher le flux dans le navigateur
 sudo apt install ros-jazzy-web-video-server
-```
-* Rosdep
-```sh
+
+# rosdep (résolution des dépendances)
 sudo apt install python3-rosdep
 sudo rosdep init
 rosdep update
 ```
 
-* MoveIt
+<a id="construction-du-workspace"></a>
+### Construction du workspace
+
+Le driver UR et sa configuration MoveIt sont fournis par les paquets apt de
+l'étape précédente : le workspace ne compile donc que les nœuds propres au projet.
+
 ```sh
-git clone -b jazzy https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver.git
-```
-
-
-### Installation
-
-1. Clone the repo
-```sh
+# 1. Cloner le dépôt
 git clone https://github.com/OctaveLouvel/Stage1A.git
-```
+cd Stage1A/ws
 
-* MoveIt
-```sh
-git clone -b jazzy https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver.git
-```
-
-3. Build the workspace
-```sh
-cd ws/src
-git clone -b jazzy https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver.git
-cd ..
-sudo apt update && rosdep install -r --from-paths . --ignore-src --rosdistro jazzy -y
-source /opt/ros/jazzy/setup.zsh # or bash depending on your shell 
+# 2. Installer les dépendances puis compiler
+source /opt/ros/jazzy/setup.bash        # ou setup.zsh selon votre shell
+sudo apt update && rosdep install -r --from-paths src --ignore-src --rosdistro jazzy -y
 colcon build --symlink-install
-source install/setup.zsh # or bash depending on your shell
+source install/setup.bash               # ou setup.zsh
 cd ..
 ```
 
-2. Install NPM packages for node red
+Packages ROS 2 compilés par le workspace (`ws/src/`) :
+
+- `pose_to_moveit` — convertit une pose cartésienne en trajectoire articulaire via MoveIt.
+- `ur_force_controller` — commande en effort du bras.
+- `ur_safety_monitor` — surveillance de sécurité pendant la commande en effort.
+- `ur_motion_manager` — gestion des séquences de mouvements et mode « teach ».
+
+> Les drivers caméra (`realsense2_camera`, `orbbec_camera`) proviennent des paquets
+> apt installés plus haut ; il n'est pas nécessaire de les recompiler depuis les
+> sources.
+
+<a id="node-red"></a>
+### Node-RED
+
 ```sh
-# You need to have add sourced the ROS2 workspace before running this command
+# Le workspace ROS 2 doit être sourcé AVANT cette étape
 cd node-red
 npm install
 cd ..
 ```
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- USAGE -->
+<a id="utilisation"></a>
+## Utilisation
+
+Un script de lancement `launcher.py` démarre les bons nœuds selon le mode souhaité,
+sans avoir à mémoriser les commandes ROS.
+
+```sh
+python3 launcher.py
+```
+
+Un menu propose plusieurs **profils** :
+
+| Profil | Nœuds démarrés | Usage |
+|--------|----------------|-------|
+| **NodeRed seul** | Node-RED | Ouvrir uniquement l'interface |
+| **Robot seul** | Node-RED, driver UR, MoveIt, `pose_to_moveit` | Commande articulaire et cartésienne |
+| **Commande en force** | Node-RED, driver UR, safety monitor, force controller, motion manager, teach | Commande en effort |
+| **RealSense** | Node-RED, caméra RealSense, web video server | Visualisation RealSense |
+| **Astra2** | Node-RED, caméra Orbbec, web video server | Visualisation Orbbec |
+| **Tout** | Ensemble des nœuds | Démonstration complète |
+
+> **Robot réel vs simulation** — ouvrez `launcher.py` et réglez en haut du fichier :
+> `ROBOT_IP` (adresse du robot) et `USE_MOCK` (`True` = matériel simulé, aucun robot
+> requis ; `False` = robot réel).
+
+Une fois lancé, ouvrez l'interface dans un navigateur :
+
+```
+http://localhost:1880/dashboard
+```
+
+`Ctrl+C` dans le terminal du launcher arrête proprement tous les nœuds.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- INTERFACE -->
+<a id="interface-node-red"></a>
+## L'interface Node-RED
 
+L'interface est organisée en deux pages.
 
-<!-- USAGE EXAMPLES -->
-## Usage
+### Page « View and Move »
 
-You can use this project to connect different ROS2 nodes with the help of Node Red. You can also use it to control a UR3e robot with MoveIt and a force controller. But the main aspect of the project is it's use for learning. Add your nodes and use the Node Red interface to connect them together. You can also use the included nodes to control the robot and visualize the data from the sensors.
+- **Move Joints** — un slider par articulation + `Valider` pour envoyer la consigne,
+  `Home` pour revenir à la position de repos.
+- **Déplacement point** — saisir une position `x / y / z` et une orientation
+  (quaternion), puis `Valider` : la pose est résolue par cinématique inverse (MoveIt)
+  et exécutée. Le résultat (succès / échec IK) est affiché.
+- **Positions / Vitesses / Effort** — affichage en temps réel de la position, de la
+  vitesse et de l'effort de chaque articulation (lecture de `/joint_states`).
+- **Caméra** — bouton `Find image topics` pour lister les flux disponibles, puis
+  sélection du topic à afficher (RealSense ou Orbbec via `web_video_server`).
+
+### Page « Record and Play »
+
+- **Record** — nommer un enregistrement, choisir les topics à capturer, puis
+  `Start Recording` / `Stop Recording`. Les données sont écrites dans `bags/` au
+  format `rosbag`.
+- **Data** — liste des enregistrements disponibles dans `bags/`.
+- **Playback** — sélectionner un enregistrement et le rejouer
+  (`Playback` / `Stop` / `Pause` / `Resume`).
+
+C'est ce module qui répond au besoin d'**enregistrement et d'exportation des données**
+(états du robot, commandes, caméra) pour analyse ultérieure.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- STRUCTURE -->
+<a id="structure-du-depot"></a>
+## Structure du dépôt
 
-<!-- CONTRIBUTING -->
-## Contributing
-
-Feel free to contribute to this project by adding features or fixing bugs! For example if you wan't to add new ros2 packages to the project, you can do this by following these steps:
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+```
+.
+├── launcher.py          # Script de lancement (menu de profils)
+├── ws/                  # Workspace ROS 2
+│   └── src/
+│       ├── pose_to_moveit/       # Pose cartésienne → IK → trajectoire
+│       ├── ur_force_controller/  # Commande en effort
+│       ├── ur_safety_monitor/    # Surveillance de sécurité
+│       ├── ur_motion_manager/    # Séquences de mouvements + teach
+│       ├── realsense-ros/        # Driver caméra RealSense
+│       └── OrbbecSDK_ROS2/       # Driver caméra Orbbec
+├── node-red/            # Flows et configuration Node-RED
+└── bags/                # Enregistrements rosbag (générés à l'usage)
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- CONTACT -->
+<a id="contact"></a>
 ## Contact
 
-Octave Louvel - octavelouvel@gmail.com
+Octave Louvel — octavelouvel@gmail.com
+
+Encadrants (Université d'Évry — IBISC) :
+- Lamri Nehaoua — lamri.nehaoua@univ-evry.fr
+- Hicham Hadj-Abdelkader — hicham.hadjabdelkader@univ-evry.fr
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/OctaveLouvel/Stage1A.svg?style=for-the-badge
-[contributors-url]: https://github.com/OctaveLouvel/Stage1A/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/OctaveLouvel/Stage1A.svg?style=for-the-badge
-[forks-url]: https://github.com/OctaveLouvel/Stage1A/network/members
-[stars-shield]: https://img.shields.io/github/stars/OctaveLouvel/Stage1A.svg?style=for-the-badge
-[stars-url]: https://github.com/OctaveLouvel/Stage1A/stargazers
-[issues-shield]: https://img.shields.io/github/issues/OctaveLouvel/Stage1A.svg?style=for-the-badge
-[issues-url]: https://github.com/OctaveLouvel/Stage1A/issues
-[license-shield]: https://img.shields.io/github/license/OctaveLouvel/Stage1A.svg?style=for-the-badge
-[license-url]: https://github.com/OctaveLouvel/Stage1A/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
-<!-- Shields.io badges. You can a comprehensive list with many more badges at: https://github.com/inttter/md-badges -->
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
