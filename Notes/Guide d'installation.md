@@ -77,8 +77,7 @@ ros2 launch realsense2_camera rs_launch.py \
     rgb_camera.profile:=240x240x2
 ```
 
-# Pour la camera Astra 2
-https://github.com/orbbec/OrbbecSDK_ROS2
+# Pour le mapping avec RTABMAP
 
 ```sh
 ros2 launch orbbec_camera astra2.launch.py \
