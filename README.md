@@ -136,6 +136,7 @@ est toujours incluse) :
 |----------|------|---------|
 | `USE_MOCK` | Robot simulé ou réel | `true` (simulé, défaut) / `false` (réel) |
 | `ROBOT_IP` | Adresse du robot réel | ex. `192.168.0.10` (si `USE_MOCK=false`) |
+| `LAUNCH_RVIZ` | Ouvrir la fenêtre RViz (MoveIt) | `true` (défaut) / `false` |
 
 Ces variables se règlent comme `PROFILE` (en ligne de commande ou dans
 `docker-compose.yml`). Exemple, robot réel :
@@ -143,6 +144,13 @@ Ces variables se règlent comme `PROFILE` (en ligne de commande ou dans
 ```sh
 PROFILE="Robot seul" USE_MOCK="false" ROBOT_IP="192.168.0.10" docker compose up
 ```
+
+> **RViz dans Docker.** Avec les profils `Robot seul`, `Commande en force` et
+> `Tout`, la fenêtre **RViz** (MoveIt) s'ouvre automatiquement, comme en usage
+> manuel. L'affichage graphique de l'hôte (X11) est partagé via `docker-compose.yml`
+> et fonctionne tel quel sur une session Linux/X11. Si la fenêtre n'apparaît pas
+> (machine sans écran, ou autorisation X refusée), lancer avec `LAUNCH_RVIZ=false`,
+> ou autoriser l'affichage par `xhost +local:` (paquet `xhost` requis).
 
 > Pour une caméra USB (RealSense/Orbbec), décommenter les lignes `privileged` /
 > `/dev` dans `docker-compose.yml`.

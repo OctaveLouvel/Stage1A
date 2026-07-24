@@ -28,6 +28,10 @@ source ws/install/setup.{_SETUP_EXT}
 ROBOT_IP = os.environ.get("ROBOT_IP", "0.0.0.0")
 USE_MOCK = os.environ.get("USE_MOCK", "true").lower() in ("1", "true", "yes", "on")
 
+# RViz (fenêtre MoveIt) : activée par défaut comme en usage manuel. En Docker,
+# nécessite le partage de l'affichage X11 (voir docker-compose.yml).
+LAUNCH_RVIZ = os.environ.get("LAUNCH_RVIZ", "true").lower() in ("1", "true", "yes", "on")
+
 #####################################
 #         COMMANDES
 #####################################
@@ -55,7 +59,7 @@ COMMANDS = {
     {WORKSPACE_SETUP}
     ros2 launch ur_moveit_config ur_moveit.launch.py \
         ur_type:=ur3e \
-        launch_rviz:=false
+        launch_rviz:={str(LAUNCH_RVIZ).lower()}
     """,
 
     "PoseToMoveIt": f"""

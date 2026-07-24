@@ -38,10 +38,24 @@ services:
       USE_MOCK: "${USE_MOCK:-true}"
       # Adresse IP du robot réel (utilisée seulement si USE_MOCK=false)
       ROBOT_IP: "${ROBOT_IP:-0.0.0.0}"
+      # true = ouvrir la fenêtre RViz (MoveIt) avec les profils bras/force.
+      # Nécessite l'affichage X11 partagé ci-dessous. Mettre "false" sur une
+      # machine sans écran. Avant le premier lancement, autoriser l'affichage :
+      #   xhost +local:
+      LAUNCH_RVIZ: "${LAUNCH_RVIZ:-true}"
+      DISPLAY: "${DISPLAY:-:0}"
+      XAUTHORITY: "/tmp/.Xauthority"
+      QT_X11_NO_MITSHM: "1"
 
-    # Enregistrements rosbag conservés sur l'hôte
+    # Enregistrements rosbag conservés sur l'hôte + affichage X11 pour RViz :
+    #  - le socket X du serveur graphique
+    #  - le cookie d'autorisation X11 (variable XAUTHORITY de l'hôte). Si elle
+    #    n'est pas définie, /dev/null est monté et RViz ne s'ouvrira pas (mettre
+    #    alors LAUNCH_RVIZ=false, ou installer xhost puis `xhost +local:`).
     volumes:
       - ./bags:/app/bags
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - "${XAUTHORITY:-/dev/null}:/tmp/.Xauthority:ro"
 
     # Décommenter pour utiliser une caméra USB (RealSense / Orbbec) :
     # privileged: true
