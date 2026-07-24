@@ -17,9 +17,10 @@
   <summary>Table des matières</summary>
   <ol>
     <li><a href="#a-propos">À propos du projet</a></li>
+    <li><a href="#demarrage-rapide-docker">Démarrage rapide (Docker)</a></li>
     <li><a href="#architecture">Architecture</a></li>
     <li>
-      <a href="#installation">Installation</a>
+      <a href="#installation">Installation manuelle</a>
       <ul>
         <li><a href="#prerequis">Prérequis</a></li>
         <li><a href="#construction-du-workspace">Construction du workspace</a></li>
@@ -62,6 +63,89 @@ Fonctionnalités couvertes :
   par communication TCP directe. Elle intègre à cette interface une brique de
   communication KAREL initialement présentée par un autre étudiant (voir
   [Page « Contrôle robot TCP »](#interface-node-red)).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- QUICK START DOCKER -->
+<a id="demarrage-rapide-docker"></a>
+## Démarrage rapide (Docker)
+
+C'est la manière **la plus simple** d'utiliser la plateforme : aucune installation
+de ROS, Node.js ou des drivers n'est nécessaire, tout est contenu dans une image
+Docker. Idéal pour une prise en main rapide, sans connaissances en informatique.
+
+**Prérequis :** [Docker](https://docs.docker.com/engine/install/) et Docker Compose
+installés (Linux). Rien d'autre.
+
+**1. Lancer la plateforme** (depuis le dossier du projet) :
+
+```sh
+docker compose up
+```
+
+La première fois, l'image se construit automatiquement (quelques minutes). Les fois
+suivantes, le démarrage est immédiat.
+
+**2. Ouvrir l'interface** dans un navigateur :
+
+```
+http://localhost:1880/dashboard
+```
+
+C'est tout : l'interface est en ligne, sans aucun matériel ni installation.
+
+**Démo interactive immédiate (sans robot)** — la page « Contrôle robot TCP » peut
+être pilotée en lançant le serveur FANUC simulé, dans un autre terminal :
+
+```sh
+python3 fanuc/mock_karel_server.py
+```
+
+On peut alors envoyer des commandes d'axes et voir l'état « robot » se mettre à jour.
+
+**Pour arrêter :** `Ctrl+C`, ou `docker compose down` dans un autre terminal.
+
+### Choisir ce que l'on lance (profils)
+
+Par défaut, `docker compose up` démarre le profil **`NodeRed seul`** : uniquement
+l'interface, sans matériel. On choisit un autre profil de deux façons :
+
+- **Ponctuellement**, sans rien modifier :
+
+  ```sh
+  PROFILE="Robot seul" docker compose up
+  ```
+
+- **Durablement**, en changeant la ligne `PROFILE:` dans `docker-compose.yml`.
+
+Chaque profil lance exactement l'ensemble de nœuds suivant (l'interface Node-RED
+est toujours incluse) :
+
+| Profil | Ce qui démarre (en plus de l'interface) | À utiliser pour |
+|--------|-----------------------------------------|-----------------|
+| **`NodeRed seul`** | *(rien d'autre)* | Ouvrir seulement l'interface / la démo TCP KAREL. Aucun matériel. |
+| **`Robot seul`** | driver UR (`ur_control`), MoveIt (`ur_moveit`), pont `pose_to_moveit` | Piloter le bras UR3e : déplacements articulaires et cartésiens depuis la page « View and Move ». |
+| **`Commande en force`** | driver UR, `ur_safety_monitor`, `ur_force_controller`, `ur_motion_manager`, `teach_node` | Commande en effort et apprentissage de trajectoires (mode force). |
+| **`RealSense`** | caméra Intel RealSense (`rs_launch`), `web_video_server` | Ajouter le flux d'une caméra RealSense dans l'interface. |
+| **`Astra2`** | caméra Orbbec Astra2 (`astra2.launch`), `web_video_server` | Ajouter le flux d'une caméra Orbbec Astra2. |
+| **`Tout`** | driver UR + MoveIt + `pose_to_moveit` + caméras RealSense et Astra2 | Démonstration complète (bras + caméras). |
+
+### Autres réglages (optionnel)
+
+| Variable | Rôle | Valeurs |
+|----------|------|---------|
+| `USE_MOCK` | Robot simulé ou réel | `true` (simulé, défaut) / `false` (réel) |
+| `ROBOT_IP` | Adresse du robot réel | ex. `192.168.0.10` (si `USE_MOCK=false`) |
+
+Ces variables se règlent comme `PROFILE` (en ligne de commande ou dans
+`docker-compose.yml`). Exemple, robot réel :
+
+```sh
+PROFILE="Robot seul" USE_MOCK="false" ROBOT_IP="192.168.0.10" docker compose up
+```
+
+> Pour une caméra USB (RealSense/Orbbec), décommenter les lignes `privileged` /
+> `/dev` dans `docker-compose.yml`.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -127,7 +211,10 @@ flowchart TB
 
 <!-- INSTALLATION -->
 <a id="installation"></a>
-## Installation
+## Installation manuelle
+
+> Cette section s'adresse au développement. Pour un simple usage, préférez le
+> [démarrage rapide avec Docker](#demarrage-rapide-docker).
 
 Testé sur **Ubuntu 24.04** avec **ROS 2 Jazzy**.
 
@@ -339,6 +426,8 @@ Il suffit ensuite d'ouvrir la page « Contrôle robot TCP » et d'envoyer des co
 
 ```
 .
+├── docker-compose.yml   # Démarrage simple : « docker compose up »
+├── docker/              # Image tout-en-un (Dockerfile + entrypoint)
 ├── launcher.py          # Script de lancement (menu de profils)
 ├── ws/                  # Workspace ROS 2
 │   └── src/

@@ -1,0 +1,51 @@
+# Démarrage simple de la plateforme UR3e.
+#
+#   docker compose up        -> construit l'image (première fois) et démarre tout
+#   puis ouvrir http://localhost:1880/dashboard dans un navigateur
+#
+services:
+  ur3e-platform:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: ur3e-platform
+    container_name: ur3e-platform
+
+    # Réseau de l'hôte : rend l'interface accessible sur localhost et permet la
+    # communication ROS 2 / la connexion au robot réel sur le réseau local.
+    # (Linux uniquement.)
+    network_mode: host
+
+    # Ordonnancement temps réel : requis par ros2_control (controller_manager)
+    # pour piloter le robot de façon stable, en simulation comme en réel.
+    cap_add:
+      - SYS_NICE
+    ulimits:
+      rtprio: 99
+      memlock: -1
+
+    environment:
+      # Profil lancé au démarrage — CHOISIR ICI ce qui démarre :
+      #   "NodeRed seul"      -> interface seule (défaut, aucun matériel requis)
+      #   "Robot seul"        -> interface + bras UR3e (commande articulaire/cartésienne)
+      #   "Commande en force" -> interface + bras UR3e + commande en effort
+      #   "RealSense"         -> interface + caméra Intel RealSense + flux vidéo
+      #   "Astra2"            -> interface + caméra Orbbec Astra2 + flux vidéo
+      #   "Tout"              -> l'ensemble (bras + caméras)
+      # Modifiable sans éditer ce fichier :  PROFILE="Tout" docker compose up
+      PROFILE: "${PROFILE:-NodeRed seul}"
+      # true = robot simulé (aucun matériel requis) ; false = robot réel
+      USE_MOCK: "${USE_MOCK:-true}"
+      # Adresse IP du robot réel (utilisée seulement si USE_MOCK=false)
+      ROBOT_IP: "${ROBOT_IP:-0.0.0.0}"
+
+    # Enregistrements rosbag conservés sur l'hôte
+    volumes:
+      - ./bags:/app/bags
+
+    # Décommenter pour utiliser une caméra USB (RealSense / Orbbec) :
+    # privileged: true
+    # volumes:
+    #   - /dev:/dev
+
+    restart: unless-stopped

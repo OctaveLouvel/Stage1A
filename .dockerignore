@@ -1,0 +1,17 @@
+# Artefacts de build (régénérés dans l'image)
+**/build
+**/install
+**/log
+**/__pycache__
+**/node_modules
+
+# Sources des drivers caméra : fournies par apt dans l'image, inutile de les copier
+# (elles pèsent ~1 Go et ne sont pas compilées ici)
+ws/src/realsense-ros
+ws/src/OrbbecSDK_ROS2
+
+# Données et fichiers locaux
+bags/
+Notes/
+.git
+docker/*.log

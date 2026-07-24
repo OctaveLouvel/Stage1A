@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 import subprocess
 import signal
 import sys
@@ -9,17 +10,23 @@ import time
 #             SETTINGS
 #####################################
 
-SHELL = "zsh"
+# Tout est configurable par variable d'environnement (utilisé par Docker),
+# avec les mêmes valeurs par défaut qu'auparavant pour un usage manuel en zsh.
 
-ROS_SETUP = "source /opt/ros/jazzy/setup.zsh"
+SHELL = os.environ.get("LAUNCHER_SHELL", "zsh")
 
-WORKSPACE_SETUP = """
-source /opt/ros/jazzy/setup.zsh
-source ws/install/setup.zsh
+# Extension des fichiers de setup ROS selon le shell (zsh -> .zsh, sinon .bash)
+_SETUP_EXT = "zsh" if SHELL == "zsh" else "bash"
+
+ROS_SETUP = f"source /opt/ros/jazzy/setup.{_SETUP_EXT}"
+
+WORKSPACE_SETUP = f"""
+source /opt/ros/jazzy/setup.{_SETUP_EXT}
+source ws/install/setup.{_SETUP_EXT}
 """
 
-ROBOT_IP = "0.0.0.0"
-USE_MOCK = True
+ROBOT_IP = os.environ.get("ROBOT_IP", "0.0.0.0")
+USE_MOCK = os.environ.get("USE_MOCK", "true").lower() in ("1", "true", "yes", "on")
 
 #####################################
 #         COMMANDES
@@ -47,7 +54,8 @@ COMMANDS = {
     {ROS_SETUP}
     {WORKSPACE_SETUP}
     ros2 launch ur_moveit_config ur_moveit.launch.py \
-        ur_type:=ur3e
+        ur_type:=ur3e \
+        launch_rviz:=false
     """,
 
     "PoseToMoveIt": f"""
@@ -192,28 +200,37 @@ def stop_all():
             pass
 
 
-signal.signal(signal.SIGINT, lambda s, f: (
-    stop_all(),
-    sys.exit(0)
-))
+_stop_handler = lambda s, f: (stop_all(), sys.exit(0))
+signal.signal(signal.SIGINT, _stop_handler)
+signal.signal(signal.SIGTERM, _stop_handler)   # arrêt propre via `docker stop`
 
 #####################################
 #             MENU
 #####################################
 
-print()
-print("========== Launcher ==========")
-
 profiles = list(PROFILES.keys())
 
-for i, name in enumerate(profiles):
-    print(f"[{i+1}] {name}")
-
-print()
-
-choice = int(input("> ")) - 1
-
-selected = profiles[choice]
+# Profil passé en argument (par ex. par Docker) -> lancement non interactif.
+# Accepte un numéro ("2") ou un nom exact ("Robot seul").
+if len(sys.argv) > 1:
+    arg = sys.argv[1]
+    if arg.isdigit():
+        choice = int(arg) - 1
+    elif arg in profiles:
+        choice = profiles.index(arg)
+    else:
+        print(f"Profil inconnu : {arg!r}")
+        print("Profils disponibles :", ", ".join(profiles))
+        sys.exit(1)
+    selected = profiles[choice]
+else:
+    print()
+    print("========== Launcher ==========")
+    for i, name in enumerate(profiles):
+        print(f"[{i+1}] {name}")
+    print()
+    choice = int(input("> ")) - 1
+    selected = profiles[choice]
 
 print(f"\nLancement du profil : {selected}\n")
 
