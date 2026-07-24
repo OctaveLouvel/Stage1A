@@ -352,9 +352,16 @@ http://localhost:1880/dashboard
 <a id="interface-node-red"></a>
 ## L'interface Node-RED
 
-L'interface est organisée en trois pages.
+L'interface est organisée en trois pages. **Deux protocoles bien distincts** y
+cohabitent, et il ne faut pas les confondre :
 
-### Page « View and Move »
+- Les pages **« View and Move »** et **« Record and Play »** pilotent le bras **UR3e
+  exclusivement via ROS 2** (topics et services). Aucune communication TCP directe :
+  tout passe par le driver UR et les nœuds du workspace.
+- La page **« Contrôle robot TCP »** pilote un bras **FANUC via une socket TCP/KAREL**
+  (aucun ROS). C'est le seul endroit où l'on ouvre une connexion réseau à choisir.
+
+### Page « View and Move » *(ROS 2)*
 
 - **Move Joints** — un slider par articulation + `Valider` pour envoyer la consigne,
   `Home` pour revenir à la position de repos.
@@ -366,7 +373,7 @@ L'interface est organisée en trois pages.
 - **Caméra** — bouton `Find image topics` pour lister les flux disponibles, puis
   sélection du topic à afficher (RealSense ou Orbbec via `web_video_server`).
 
-### Page « Record and Play »
+### Page « Record and Play » *(ROS 2)*
 
 - **Record** — nommer un enregistrement, choisir les topics à capturer, puis
   `Start Recording` / `Stop Recording`. Les données sont écrites dans `bags/` au
@@ -378,7 +385,7 @@ L'interface est organisée en trois pages.
 C'est ce module qui répond au besoin d'**enregistrement et d'exportation des données**
 (états du robot, commandes, caméra) pour analyse ultérieure.
 
-### Page « Contrôle robot TCP » (robot FANUC / KAREL)
+### Page « Contrôle robot TCP » *(TCP/KAREL — robot FANUC)*
 
 Cette page pilote un bras **FANUC** via une communication **TCP directe** avec un
 serveur écrit en **KAREL** (le langage des contrôleurs FANUC), sur le port `59002`.
@@ -387,6 +394,14 @@ Elle réutilise et intègre à cette interface une brique de communication TCP/K
 page cohérente du tableau de bord, à normaliser le protocole d'échange et à la rendre
 démontrable de manière autonome.
 
+C'est la **seule** page qui demande de choisir une connexion (le reste de l'interface
+passe par ROS 2). Le sélecteur de connexion se trouve donc **ici**, et nulle part
+ailleurs.
+
+- **Connexion** — saisir l'**adresse IP** et le **port** du serveur KAREL, puis valider.
+  Les valeurs par défaut (`127.0.0.1:59002`) conviennent au serveur simulé lancé en
+  local ; pour un vrai contrôleur FANUC, renseigner son IP. La connexion active est
+  rappelée à l'écran (`Connexion : 127.0.0.1:59002`).
 - **Commande** — choisir un axe (`J1`–`J6`), saisir un angle et cliquer `Envoyer` ;
   boutons `Home` (retour repos) et `Quitter` (fermeture de connexion).
 - **État du robot** — affiche la réponse brute du serveur et les positions

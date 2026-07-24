@@ -4461,20 +4461,6 @@
         "env": []
     },
     {
-        "id": "2d36c3130887d4fd",
-        "type": "ui-group",
-        "name": "Select connection",
-        "page": "f04468f063e29700",
-        "width": 6,
-        "height": 1,
-        "order": 1,
-        "showTitle": true,
-        "className": "",
-        "visible": "true",
-        "disabled": "false",
-        "groupType": "default"
-    },
-    {
         "id": "uithemetcp0001",
         "type": "ui-theme",
         "name": "Theme TCP",
@@ -4536,7 +4522,7 @@
         "page": "uipagetcp00001",
         "width": "6",
         "height": "1",
-        "order": 1,
+        "order": 2,
         "showTitle": true,
         "className": "",
         "visible": "true",
@@ -4550,63 +4536,12 @@
         "page": "uipagetcp00001",
         "width": "6",
         "height": "1",
-        "order": 2,
+        "order": 3,
         "showTitle": true,
         "className": "",
         "visible": "true",
         "disabled": "false",
         "groupType": "default"
-    },
-    {
-        "id": "5463bc66ad767695",
-        "type": "ui-text-input",
-        "z": "37999168f7331a03",
-        "group": "2d36c3130887d4fd",
-        "name": "",
-        "label": "text",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "topic": "topic",
-        "topicType": "msg",
-        "mode": "number",
-        "tooltip": "",
-        "delay": 300,
-        "passthru": true,
-        "sendOnDelay": false,
-        "sendOnBlur": true,
-        "sendOnEnter": true,
-        "className": "",
-        "clearable": false,
-        "sendOnClear": false,
-        "icon": "ip",
-        "iconPosition": "left",
-        "iconInnerPosition": "inside",
-        "x": 190,
-        "y": 700,
-        "wires": [
-            [
-                "b7f01dc91119464f"
-            ]
-        ]
-    },
-    {
-        "id": "b7f01dc91119464f",
-        "type": "function",
-        "z": "37999168f7331a03",
-        "name": "set tcp connection",
-        "func": "\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 410,
-        "y": 700,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "41314bc468cb6eca",
@@ -4624,94 +4559,6 @@
         "y": 1300,
         "wires": [
             []
-        ]
-    },
-    {
-        "id": "b69be92944690dfb",
-        "type": "tcp request",
-        "z": "37999168f7331a03",
-        "name": "",
-        "server": "",
-        "port": "",
-        "out": "time",
-        "ret": "buffer",
-        "splitc": "0",
-        "newline": "",
-        "trim": false,
-        "tls": "",
-        "x": 390,
-        "y": 1400,
-        "wires": [
-            [
-                "33b204ca5682175a"
-            ]
-        ]
-    },
-    {
-        "id": "eb1c9dd6ab04247a",
-        "type": "tcp request",
-        "z": "37999168f7331a03",
-        "name": "",
-        "server": "",
-        "port": "",
-        "out": "time",
-        "ret": "buffer",
-        "splitc": "0",
-        "newline": "",
-        "trim": false,
-        "tls": "",
-        "x": 790,
-        "y": 1300,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "36b076490b356c42",
-        "type": "tcp request",
-        "z": "37999168f7331a03",
-        "g": "2d2a5e96dc4978ef",
-        "name": "",
-        "server": "",
-        "port": "",
-        "out": "time",
-        "ret": "buffer",
-        "splitc": "0",
-        "newline": "",
-        "trim": false,
-        "tls": "",
-        "x": 590,
-        "y": 100,
-        "wires": [
-            [
-                "5dee394fc916b9b7"
-            ]
-        ]
-    },
-    {
-        "id": "8bc818d9585c1aff",
-        "type": "tcp in",
-        "z": "37999168f7331a03",
-        "g": "f6ed4aabf676c162",
-        "name": "",
-        "server": "server",
-        "host": "",
-        "port": "59002",
-        "datamode": "stream",
-        "datatype": "utf8",
-        "newline": ";",
-        "topic": "",
-        "trim": false,
-        "base64": false,
-        "tls": "",
-        "x": 900,
-        "y": 460,
-        "wires": [
-            [
-                "d5acd84142090c52",
-                "ed90c8abb10bebd4",
-                "8ae62da8e903d221"
-            ]
         ]
     },
     {
@@ -4918,7 +4765,7 @@
         "y": 260,
         "wires": [
             [
-                "tcpreq00000001"
+                "fnapplyconn001"
             ],
             [
                 "txtreponse0001"
@@ -4960,7 +4807,7 @@
         "y": 320,
         "wires": [
             [
-                "tcpreq00000001"
+                "fnapplyconn001"
             ]
         ]
     },
@@ -4999,7 +4846,7 @@
         "y": 380,
         "wires": [
             [
-                "tcpreq00000001"
+                "fnapplyconn001"
             ]
         ]
     },
@@ -5007,9 +4854,9 @@
         "id": "tcpreq00000001",
         "type": "tcp request",
         "z": "tabtcp00000001",
-        "name": "Robot Fanuc :59002",
-        "server": "127.0.0.1",
-        "port": "59002",
+        "name": "Robot Fanuc (connexion dynamique)",
+        "server": "",
+        "port": "",
         "out": "sit",
         "ret": "string",
         "splitc": " ",
@@ -5297,6 +5144,210 @@
         "y": 500,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "uigrpconn0001",
+        "type": "ui-group",
+        "name": "Connexion",
+        "page": "uipagetcp00001",
+        "width": "6",
+        "height": "1",
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "inconnip000001",
+        "type": "ui-text-input",
+        "z": "tabtcp00000001",
+        "group": "uigrpconn0001",
+        "name": "Adresse IP",
+        "label": "Adresse IP du robot",
+        "order": 1,
+        "width": "4",
+        "height": "1",
+        "topic": "host",
+        "topicType": "str",
+        "mode": "text",
+        "tooltip": "IP du serveur KAREL (127.0.0.1 pour le simulateur local)",
+        "delay": "300",
+        "passthru": true,
+        "sendOnDelay": false,
+        "sendOnBlur": true,
+        "sendOnEnter": true,
+        "className": "",
+        "clearable": false,
+        "sendOnClear": false,
+        "icon": "ip",
+        "iconPosition": "left",
+        "iconInnerPosition": "inside",
+        "x": 150,
+        "y": 60,
+        "wires": [
+            [
+                "fnsetip000001"
+            ]
+        ]
+    },
+    {
+        "id": "inconnport0001",
+        "type": "ui-number-input",
+        "z": "tabtcp00000001",
+        "group": "uigrpconn0001",
+        "name": "Port",
+        "label": "Port",
+        "order": 2,
+        "width": "2",
+        "height": "1",
+        "topic": "port",
+        "topicType": "str",
+        "min": "1",
+        "max": "65535",
+        "step": "1",
+        "tooltip": "Port TCP du serveur KAREL (59002 par défaut)",
+        "delay": "300",
+        "passthru": true,
+        "sendOnDelay": false,
+        "sendOnBlur": true,
+        "sendOnEnter": true,
+        "className": "",
+        "clearable": false,
+        "icon": "",
+        "iconPosition": "left",
+        "iconInnerPosition": "inside",
+        "spinner": "stacked",
+        "x": 150,
+        "y": 120,
+        "wires": [
+            [
+                "fnsetport00001"
+            ]
+        ]
+    },
+    {
+        "id": "txtconnact0001",
+        "type": "ui-text",
+        "z": "tabtcp00000001",
+        "group": "uigrpconn0001",
+        "order": 3,
+        "width": "6",
+        "height": "1",
+        "name": "Connexion active",
+        "label": "Connexion :",
+        "format": "{{msg.payload}}",
+        "layout": "row-left",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#333333",
+        "wrapText": true,
+        "className": "",
+        "value": "payload",
+        "valueType": "msg",
+        "x": 560,
+        "y": 90,
+        "wires": []
+    },
+    {
+        "id": "fnsetip000001",
+        "type": "function",
+        "z": "tabtcp00000001",
+        "name": "mémorise IP",
+        "func": "flow.set('fanuc_host', String(msg.payload).trim());\nmsg.payload = (flow.get('fanuc_host') || '127.0.0.1') + ':' + (flow.get('fanuc_port') || 59002);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 60,
+        "wires": [
+            [
+                "txtconnact0001"
+            ]
+        ]
+    },
+    {
+        "id": "fnsetport00001",
+        "type": "function",
+        "z": "tabtcp00000001",
+        "name": "mémorise port",
+        "func": "flow.set('fanuc_port', Number(msg.payload));\nmsg.payload = (flow.get('fanuc_host') || '127.0.0.1') + ':' + (flow.get('fanuc_port') || 59002);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 120,
+        "wires": [
+            [
+                "txtconnact0001"
+            ]
+        ]
+    },
+    {
+        "id": "injseedconn01",
+        "type": "inject",
+        "z": "tabtcp00000001",
+        "name": "init connexion (défaut)",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.3",
+        "topic": "",
+        "x": 150,
+        "y": 180,
+        "wires": [
+            [
+                "fninitconn0001"
+            ]
+        ]
+    },
+    {
+        "id": "fninitconn0001",
+        "type": "function",
+        "z": "tabtcp00000001",
+        "name": "valeurs par défaut",
+        "func": "if (flow.get('fanuc_host') === undefined) flow.set('fanuc_host', '127.0.0.1');\nif (flow.get('fanuc_port') === undefined) flow.set('fanuc_port', 59002);\nmsg.payload = flow.get('fanuc_host') + ':' + flow.get('fanuc_port');\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 180,
+        "wires": [
+            [
+                "txtconnact0001"
+            ]
+        ]
+    },
+    {
+        "id": "fnapplyconn001",
+        "type": "function",
+        "z": "tabtcp00000001",
+        "name": "applique connexion",
+        "func": "msg.host = flow.get('fanuc_host') || '127.0.0.1';\nmsg.port = Number(flow.get('fanuc_port')) || 59002;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 400,
+        "wires": [
+            [
+                "tcpreq00000001"
+            ]
         ]
     }
 ]
